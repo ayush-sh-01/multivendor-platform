@@ -78,6 +78,13 @@
 			<scope>runtime</scope>
 		</dependency>
 
+		<!-- PostgreSQL Connector: Driver to connect to Neon DB / PostgreSQL -->
+		<dependency>
+			<groupId>org.postgresql</groupId>
+			<artifactId>postgresql</artifactId>
+			<scope>runtime</scope>
+		</dependency>
+
 		<!-- Spring Boot Starter Test -->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
