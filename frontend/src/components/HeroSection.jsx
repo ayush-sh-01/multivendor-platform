@@ -1,114 +1,188 @@
-import React, { useRef } from 'react';
+import React from 'react';
 import { useTilt } from '../hooks/useTilt';
 
 export default function HeroSection() {
-  const heroCardRef = useTilt({ max: 8, scale: 1.015, speed: 400 });
+  const cardTiltRef = useTilt({ max: 6, scale: 1.02, speed: 400 });
 
   return (
-    <section className="relative min-h-[88vh] flex flex-col items-center justify-center pt-8 md:pt-12 px-6 md:px-12 max-w-[1440px] mx-auto overflow-hidden">
-      {/* Background Watermark in subtle luxury gold */}
-      <div className="absolute inset-0 z-0 flex items-center justify-center opacity-[0.03] pointer-events-none select-none">
-        <h1 className="text-[15vw] font-serif font-black whitespace-nowrap tracking-tighter text-gold">
-          THRIFT CAMPUS
-        </h1>
-      </div>
+    <section className="relative w-full bg-[#2C4234] text-[#F4EFE6] overflow-hidden">
+      {/* 50/50 Split Grid on Desktop, Stack on Mobile */}
+      <div className="grid grid-cols-1 lg:grid-cols-12 min-h-[calc(100vh-65px)] w-full">
+        {/* ================= LEFT COLUMN (Forest Green Content) ================= */}
+        <div className="col-span-1 lg:col-span-6 bg-[#2C4234] p-8 sm:p-12 lg:p-16 flex flex-col justify-between border-b lg:border-b-0 lg:border-r border-[#F4EFE6]/10">
+          <div>
+            {/* Main Headline (High-Contrast Serif, Pale Cream, Very Large, Bold) */}
+            <h1 className="font-serif text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-bold leading-[1.08] text-[#F4EFE6] tracking-tight mb-5 whitespace-pre-line">
+              CURATED CAMPUS.{"\n"}
+              SUSTAINABLE STYLE.{"\n"}
+              <span className="italic font-normal text-[#BA9F7A]">YOURS.</span>
+            </h1>
 
-      <div className="relative z-10 w-full grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-center">
-        {/* Left Column Editorial Typography */}
-        <div className="col-span-1 lg:col-span-6 flex flex-col justify-center order-2 lg:order-1 scroll-reveal">
-          <div className="mb-8">
-            <div className="flex items-center gap-2.5 mb-5">
-              <span className="w-8 h-[1px] bg-gold"></span>
-              <span className="text-[11px] uppercase font-sans font-semibold tracking-[0.25em] text-gold">
-                Archival & Sustainable
-              </span>
-            </div>
-
-            <h2 className="text-4xl sm:text-5xl lg:text-6xl font-serif font-bold leading-[1.12] mb-6 text-white tracking-tight">
-              CLOTHES WITHOUT EXCESS. <br />
-              <span className="text-gold italic font-normal">
-                ONLY STYLE.
-              </span>
-            </h2>
-
-            <p className="text-base font-sans text-[#E0E0E0]/80 max-w-lg leading-relaxed mb-6">
-              Modern silhouettes, natural fabrics, and honest design. For those who choose simplicity
-              and quality. Thrift isn't just a choice; it's a movement toward conscious consumption
-              and curated individuality.
+            {/* Sub-headline (Sans-serif, Muted Brass, Uppercase, Medium Size) */}
+            <p className="font-sans text-sm sm:text-base font-semibold uppercase tracking-[0.18em] text-[#BA9F7A] max-w-xl leading-relaxed mb-8">
+              AUTHENTICATED ARCHIVAL PIECES FOR THE CONSCIOUS STUDENT WARDROBE.
             </p>
 
-            {/* Curated Category Tag Spec */}
-            <div className="flex flex-wrap items-center gap-3 text-xs font-sans text-text-muted mb-8 py-3 border-y border-white/10 max-w-lg">
-              <span className="text-gold font-medium">Raw Selvedge Denim</span>
-              <span>•</span>
-              <span>Heavy Utility Jackets</span>
-              <span>•</span>
-              <span className="text-[#E0E0E0]">Old Money Oxfords</span>
+            {/* Trust Badges (3-Column Mini Grid) */}
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-5 mb-8 pt-2">
+              {/* Badge 1: Verification */}
+              <div className="flex items-start gap-3">
+                <span className="material-symbols-outlined text-[#BA9F7A] text-2xl shrink-0 mt-0.5">
+                  verified_user
+                </span>
+                <div>
+                  <h4 className="font-sans text-xs font-bold uppercase tracking-wider text-[#F4EFE6]">
+                    Peer Verified
+                  </h4>
+                  <p className="font-sans text-[11px] text-[#F4EFE6]/70 leading-normal mt-0.5">
+                    Authenticity inspected by campus curators.
+                  </p>
+                </div>
+              </div>
+
+              {/* Badge 2: Zero Waste */}
+              <div className="flex items-start gap-3">
+                <span className="material-symbols-outlined text-[#BA9F7A] text-2xl shrink-0 mt-0.5">
+                  recycling
+                </span>
+                <div>
+                  <h4 className="font-sans text-xs font-bold uppercase tracking-wider text-[#F4EFE6]">
+                    Circular Flow
+                  </h4>
+                  <p className="font-sans text-[11px] text-[#F4EFE6]/70 leading-normal mt-0.5">
+                    Zero carbon campus hand-offs.
+                  </p>
+                </div>
+              </div>
+
+              {/* Badge 3: Student Powered */}
+              <div className="flex items-start gap-3">
+                <span className="material-symbols-outlined text-[#BA9F7A] text-2xl shrink-0 mt-0.5">
+                  school
+                </span>
+                <div>
+                  <h4 className="font-sans text-xs font-bold uppercase tracking-wider text-[#F4EFE6]">
+                    Zero Fee
+                  </h4>
+                  <p className="font-sans text-[11px] text-[#F4EFE6]/70 leading-normal mt-0.5">
+                    100% profit returned directly to students.
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            {/* Category Tags with Divider */}
+            <div className="pt-4 pb-8 border-t border-[#F4EFE6]/15">
+              <p className="font-sans text-xs sm:text-[13px] text-[#BA9F7A] leading-relaxed flex flex-wrap gap-y-1 items-center">
+                <span>Raw Selvedge Denim</span>
+                <span className="mx-2 text-[#BA9F7A]/60">•</span>
+                <span>Heavy Utility Jackets</span>
+                <span className="mx-2 text-[#BA9F7A]/60">•</span>
+                <span>Old Money Oxfords</span>
+                <span className="mx-2 text-[#BA9F7A]/60">•</span>
+                <span>Authenticated Streetwear</span>
+              </p>
             </div>
           </div>
 
-          <div className="flex flex-wrap gap-4 items-center">
+          {/* Call To Action Row */}
+          <div className="flex flex-wrap items-center gap-6 pt-2">
+            {/* Primary Button: Rounded pill shape, Pale Cream bg, Terracotta text, bold */}
             <a
               href="#curated-finds"
               className="premium-btn"
             >
-              Shop Collection
+              <span>SHOP COLLECTION</span>
               <span className="material-symbols-outlined text-base font-bold">arrow_downward</span>
             </a>
+
+            {/* Secondary Link: Plain text next to button, Muted Brass */}
             <a
               href="#how-it-works"
-              className="premium-btn-outline"
+              className="font-sans text-xs uppercase tracking-[0.15em] font-semibold text-[#BA9F7A] hover:text-[#F4EFE6] transition-colors flex items-center gap-1"
             >
-              How It Works
+              <span>See How It Works</span>
+              <span className="text-sm">→</span>
             </a>
           </div>
         </div>
 
-        {/* Right Column: High-Fashion Framed Editorial Box (No Dummy) */}
-        <div className="col-span-1 lg:col-span-6 relative w-full order-1 lg:order-2 flex items-center justify-center">
+        {/* ================= RIGHT COLUMN (Photographic Dorm / Rack Background + Floating Card) ================= */}
+        <div className="col-span-1 lg:col-span-6 relative min-h-[480px] sm:min-h-[580px] lg:min-h-full bg-[#203227] overflow-hidden flex items-end justify-end p-6 sm:p-10 lg:p-12">
+          {/* Photographic Background: Styled warm-toned dorm room / common area clothing rack */}
+          <img
+            src="https://images.unsplash.com/photo-1558769132-cb1aea458c5e?auto=format&fit=crop&w=1600&q=85"
+            alt="Warm styled dorm space with clothing rack and canvas backpack"
+            className="absolute inset-0 w-full h-full object-cover object-center filter brightness-[0.92] contrast-[1.05]"
+          />
+
+          {/* Subtle Warm Vignette Scrim */}
+          <div className="absolute inset-0 bg-gradient-to-t from-[#203227]/90 via-[#203227]/25 to-transparent pointer-events-none"></div>
+
+          {/* Top Tag Pill on Photographic Visual */}
+          <div className="absolute top-6 left-6 z-10">
+            <span className="bg-[#2C4234]/90 text-[#BA9F7A] text-[10px] font-sans font-bold uppercase tracking-[0.2em] px-3.5 py-1.5 rounded-full border border-[#BA9F7A]/30 backdrop-blur-md">
+              Drop #04 • Curated Archival
+            </span>
+          </div>
+
+          {/* ================= FLOATING ACCENT CARD (Terracotta #B56653) ================= */}
           <div
-            ref={heroCardRef}
-            className="product-card w-full max-w-lg aspect-[4/5] relative rounded-sm border border-white/15 bg-[#141414] overflow-hidden shadow-2xl group cursor-pointer"
+            ref={cardTiltRef}
+            className="relative z-20 w-full max-w-sm bg-[#B56653] text-[#F4EFE6] p-7 md:p-8 rounded-lg shadow-2xl border border-white/20 backdrop-blur-sm transform transition-all duration-300"
           >
-            {/* Editorial Image */}
-            <img
-              src="https://image.hm.com/assets/hm/5a/dd/5add7d43120cb847f2161bb4062acfcd9fbd4094.jpg?imwidth=1200"
-              alt="Archival Drop Editorial"
-              className="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-105 brightness-95"
-            />
+            {/* Title: Serif Bold */}
+            <h3 className="font-serif text-xl sm:text-2xl font-bold uppercase text-white tracking-wide mb-4 leading-snug">
+              HEAVY TACTICAL UTILITY PARKA
+            </h3>
 
-            {/* Gradient Scrim */}
-            <div className="absolute inset-0 bg-gradient-to-t from-[#0A0A0A] via-[#0A0A0A]/20 to-transparent"></div>
-
-            {/* Top Floating Badge */}
-            <div className="absolute top-5 left-5 z-10 flex items-center gap-2">
-              <span className="bg-[#0A0A0A]/90 text-gold text-[10px] font-sans font-bold uppercase tracking-wider px-3 py-1 border border-gold/30 rounded-full backdrop-blur-md">
-                Drop #04 • Curated Archival
+            {/* Price Box */}
+            <div className="mb-4">
+              <span className="text-[10px] uppercase font-sans font-semibold tracking-widest text-[#F4EFE6]/80 block">
+                PRICE
               </span>
+              <div className="flex items-baseline gap-2 mt-0.5">
+                <span className="font-serif text-3xl font-bold text-white">$165</span>
+                <span className="text-xs font-sans text-[#F4EFE6]/90 font-medium">• Size: L</span>
+              </div>
             </div>
 
-            {/* Bottom Callout Overlay */}
-            <div className="absolute bottom-0 left-0 w-full p-6 text-white z-10">
-              <div className="flex justify-between items-end">
-                <div>
-                  <span className="text-[10px] uppercase font-sans tracking-widest text-text-muted block mb-1">
-                    Featured Grail
-                  </span>
-                  <h3 className="font-serif text-2xl font-bold text-white group-hover:text-gold transition-colors">
-                    Heavy Tactical Utility Parka
-                  </h3>
-                  <p className="text-xs text-text-muted font-sans mt-0.5">
-                    Curated by Maya Chen • NYU Tisch
-                  </p>
-                </div>
-                <div className="text-right">
-                  <span className="font-sans font-bold text-xl text-gold block">$165</span>
-                  <span className="text-[10px] text-text-muted uppercase">Size L • Deadstock</span>
-                </div>
-              </div>
+            {/* Divider */}
+            <div className="border-t border-[#F4EFE6]/20 my-3"></div>
+
+            {/* Condition Box */}
+            <div className="mb-4">
+              <span className="text-[10px] uppercase font-sans font-semibold tracking-widest text-[#F4EFE6]/80 block">
+                CONDITION
+              </span>
+              <p className="font-sans text-sm font-semibold text-white mt-0.5 flex items-center gap-1.5">
+                <span>Deadstock</span>
+                <span className="text-[#F4EFE6] text-xs">✓</span>
+              </p>
+            </div>
+
+            {/* Divider */}
+            <div className="border-t border-[#F4EFE6]/20 my-3"></div>
+
+            {/* Curator Box */}
+            <div>
+              <span className="text-[10px] uppercase font-sans font-semibold tracking-widest text-[#F4EFE6]/80 block">
+                CURATOR INFO
+              </span>
+              <p className="font-sans text-xs sm:text-[13px] font-medium text-[#F4EFE6] mt-0.5 flex items-center gap-1">
+                <span>Curated by Maya Chen • NYU Tisch</span>
+                <span className="text-white text-xs font-bold">✓</span>
+              </p>
             </div>
           </div>
         </div>
+      </div>
+
+      {/* ================= BOTTOM FOOTER BAR ================= */}
+      <div className="w-full bg-[#203227] border-t border-[#F4EFE6]/10 py-3.5 px-6 text-center">
+        <p className="font-sans text-xs uppercase tracking-[0.2em] font-semibold text-[#F4EFE6]">
+          OVER 10,000+ CURATED PIECES IN STUDENT WARDROBES • VERIFIED CAMPUS COMMUNITY
+        </p>
       </div>
     </section>
   );

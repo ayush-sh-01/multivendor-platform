@@ -1,8 +1,8 @@
 import React, { useEffect, useRef } from 'react';
 
 /**
- * Dark Gold Luxury WebGL Canvas Background
- * Deep Obsidian Black with smooth subtle golden ambient noise reacting to mouse
+ * Modern Artisan Forest Green Ambient Canvas Background
+ * Deep Forest Green (#2C4234) with subtle brass aura highlights
  */
 export default function ShaderBackground() {
   const canvasRef = useRef(null);
@@ -42,15 +42,15 @@ export default function ShaderBackground() {
 
       void main() {
         vec2 uv = v_texCoord;
-        // Deep obsidian base
-        vec3 bg = vec3(0.039, 0.039, 0.039); // #0A0A0A
+        // Deep Forest Green base (#2C4234)
+        vec3 bg = vec3(0.172, 0.258, 0.203);
         
-        // Muted gold aura highlights
-        float n1 = sin(uv.x * 3.0 + u_time * 0.2) * cos(uv.y * 3.0 - u_time * 0.2) * 0.5 + 0.5;
-        float n2 = sin(uv.x * 6.0 - u_time * 0.15) * cos(uv.y * 6.0 + u_time * 0.15) * 0.5 + 0.5;
+        // Muted brass aura highlights
+        float n1 = sin(uv.x * 3.0 + u_time * 0.15) * cos(uv.y * 3.0 - u_time * 0.15) * 0.5 + 0.5;
+        float n2 = sin(uv.x * 5.0 - u_time * 0.1) * cos(uv.y * 5.0 + u_time * 0.1) * 0.5 + 0.5;
         
-        vec3 goldAura = vec3(0.83, 0.68, 0.21) * 0.04; // #D4AF37 subtle tint
-        vec3 finalColor = bg + goldAura * (n1 * 0.6 + n2 * 0.4);
+        vec3 brassAura = vec3(0.729, 0.623, 0.478) * 0.035; // #BA9F7A subtle tint
+        vec3 finalColor = bg + brassAura * (n1 * 0.6 + n2 * 0.4);
         
         gl_FragColor = vec4(finalColor, 1.0);
       }
@@ -101,11 +101,8 @@ export default function ShaderBackground() {
   }, []);
 
   return (
-    <div className="fixed inset-0 z-[-1] pointer-events-none">
+    <div className="fixed inset-0 z-[-1] pointer-events-none bg-[#2C4234]">
       <canvas ref={canvasRef} className="w-full h-full block" />
-      {/* Radial gold gradient light */}
-      <div className="absolute top-0 right-1/4 w-[600px] h-[600px] bg-gold/5 rounded-full blur-[140px] pointer-events-none animate-gold-pulse"></div>
-      <div className="absolute bottom-1/4 left-1/4 w-[500px] h-[500px] bg-gold/5 rounded-full blur-[120px] pointer-events-none animate-gold-pulse"></div>
     </div>
   );
 }

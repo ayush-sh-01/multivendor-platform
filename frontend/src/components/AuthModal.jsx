@@ -44,28 +44,28 @@ export default function AuthModal() {
 
   return (
     <div
-      className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-md animate-fadeIn"
+      className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/75 backdrop-blur-md animate-fadeIn"
       onClick={closeAuth}
     >
       <div
-        className="relative bg-[#141414] border border-gold/40 w-full max-w-md shadow-goldLg p-6 md:p-8 rounded-sm"
+        className="relative bg-[#203227] border border-[#F4EFE6]/20 w-full max-w-md shadow-2xl p-6 md:p-8 rounded-xl text-[#F4EFE6]"
         onClick={(e) => e.stopPropagation()}
       >
         <button
           onClick={closeAuth}
-          className="absolute top-4 right-4 w-7 h-7 bg-[#0A0A0A] border border-white/20 text-[#E0E0E0] hover:text-gold hover:border-gold rounded-sm flex items-center justify-center text-xs transition-colors"
+          className="absolute top-4 right-4 w-8 h-8 bg-[#2C4234] border border-[#F4EFE6]/20 text-[#F4EFE6] hover:text-[#BA9F7A] hover:border-[#BA9F7A] rounded-full flex items-center justify-center text-xs transition-colors"
         >
           ✕
         </button>
 
         {/* Tab Toggle */}
-        <div className="flex border-b border-white/10 mb-6">
+        <div className="flex border-b border-[#F4EFE6]/15 mb-6">
           <button
             onClick={() => setAuthMode('login')}
             className={`flex-1 py-2.5 text-xs font-sans uppercase tracking-wider transition-colors font-semibold ${
               authMode === 'login'
-                ? 'border-b-2 border-gold text-gold -mb-[1px]'
-                : 'text-text-muted hover:text-white'
+                ? 'border-b-2 border-[#BA9F7A] text-[#BA9F7A] -mb-[1px]'
+                : 'text-[#F4EFE6]/60 hover:text-[#F4EFE6]'
             }`}
           >
             Sign In
@@ -74,38 +74,38 @@ export default function AuthModal() {
             onClick={() => setAuthMode('register')}
             className={`flex-1 py-2.5 text-xs font-sans uppercase tracking-wider transition-colors font-semibold ${
               authMode === 'register'
-                ? 'border-b-2 border-gold text-gold -mb-[1px]'
-                : 'text-text-muted hover:text-white'
+                ? 'border-b-2 border-[#BA9F7A] text-[#BA9F7A] -mb-[1px]'
+                : 'text-[#F4EFE6]/60 hover:text-[#F4EFE6]'
             }`}
           >
             Join Network
           </button>
         </div>
 
-        <h3 className="font-serif text-2xl md:text-3xl font-bold text-white mb-1.5">
-          {authMode === 'login' ? 'Student Sign In' : 'Join ThriftCampus'}
+        <h3 className="font-serif text-2xl md:text-3xl font-bold text-[#F4EFE6] mb-1.5">
+          {authMode === 'login' ? 'Student Sign In' : 'Join ThriftCampus+'}
         </h3>
-        <p className="text-xs text-text-muted font-sans mb-6">
+        <p className="text-xs text-[#F4EFE6]/70 font-sans mb-6">
           Access curated student drops, zero-commission selling, and peer authentications.
         </p>
 
         {/* 1-Click Quick Demo Login */}
-        <div className="mb-6 p-3.5 bg-[#1A1A1A] border border-gold/20 rounded-sm">
-          <span className="text-[10px] uppercase font-sans font-bold text-gold block mb-2 tracking-wider">
+        <div className="mb-6 p-3.5 bg-[#24362A] border border-[#BA9F7A]/30 rounded-lg">
+          <span className="text-[10px] uppercase font-sans font-bold text-[#BA9F7A] block mb-2 tracking-wider">
             ⚡ 1-Click Instant Demo Login:
           </span>
           <div className="flex gap-2.5">
             <button
               type="button"
               onClick={() => handleQuickLogin('customer')}
-              className="flex-1 py-2 bg-[#141414] text-[#E0E0E0] text-[11px] font-sans font-semibold uppercase tracking-wider border border-white/15 hover:border-gold hover:text-gold rounded-sm transition-colors"
+              className="flex-1 py-2 bg-[#2C4234] text-[#F4EFE6] text-[11px] font-sans font-semibold uppercase tracking-wider border border-[#F4EFE6]/20 hover:border-[#BA9F7A] rounded-full transition-colors"
             >
               Demo Student
             </button>
             <button
               type="button"
               onClick={() => handleQuickLogin('curator')}
-              className="flex-1 py-2 bg-gold/15 text-gold text-[11px] font-sans font-bold uppercase tracking-wider border border-gold/40 hover:bg-gold hover:text-[#0A0A0A] rounded-sm transition-colors"
+              className="flex-1 py-2 bg-[#B56653] text-[#F4EFE6] text-[11px] font-sans font-bold uppercase tracking-wider hover:bg-[#9E5442] rounded-full transition-colors"
             >
               Demo Curator
             </button>
@@ -116,7 +116,7 @@ export default function AuthModal() {
         <form onSubmit={handleSubmit} className="space-y-4 text-xs font-sans">
           {authMode === 'register' && (
             <div>
-              <label className="block text-text-muted uppercase tracking-wider mb-1.5 font-semibold text-[11px]">
+              <label className="block text-[#F4EFE6]/80 uppercase tracking-wider mb-1.5 font-semibold text-[11px]">
                 Your Full Name
               </label>
               <input
@@ -124,14 +124,14 @@ export default function AuthModal() {
                 placeholder="e.g. Maya Chen"
                 value={name}
                 onChange={(e) => setName(e.target.value)}
-                className="w-full bg-[#1A1A1A] border border-white/15 p-3 rounded-sm outline-none text-[#E0E0E0] focus:border-gold transition-colors placeholder-text-dim"
+                className="w-full bg-[#2C4234] border border-[#F4EFE6]/20 p-3 rounded-lg outline-none text-[#F4EFE6] focus:border-[#BA9F7A] transition-colors placeholder-[#F4EFE6]/40"
                 required
               />
             </div>
           )}
 
           <div>
-            <label className="block text-text-muted uppercase tracking-wider mb-1.5 font-semibold text-[11px]">
+            <label className="block text-[#F4EFE6]/80 uppercase tracking-wider mb-1.5 font-semibold text-[11px]">
               Campus / Personal Email
             </label>
             <input
@@ -139,13 +139,13 @@ export default function AuthModal() {
               placeholder="e.g. student@nyu.edu"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
-              className="w-full bg-[#1A1A1A] border border-white/15 p-3 rounded-sm outline-none text-[#E0E0E0] focus:border-gold transition-colors placeholder-text-dim"
+              className="w-full bg-[#2C4234] border border-[#F4EFE6]/20 p-3 rounded-lg outline-none text-[#F4EFE6] focus:border-[#BA9F7A] transition-colors placeholder-[#F4EFE6]/40"
               required
             />
           </div>
 
           <div>
-            <label className="block text-text-muted uppercase tracking-wider mb-1.5 font-semibold text-[11px]">
+            <label className="block text-[#F4EFE6]/80 uppercase tracking-wider mb-1.5 font-semibold text-[11px]">
               Password
             </label>
             <input
@@ -153,20 +153,20 @@ export default function AuthModal() {
               placeholder="••••••••"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
-              className="w-full bg-[#1A1A1A] border border-white/15 p-3 rounded-sm outline-none text-[#E0E0E0] focus:border-gold transition-colors placeholder-text-dim"
+              className="w-full bg-[#2C4234] border border-[#F4EFE6]/20 p-3 rounded-lg outline-none text-[#F4EFE6] focus:border-[#BA9F7A] transition-colors placeholder-[#F4EFE6]/40"
               required
             />
           </div>
 
           {authMode === 'register' && (
             <div>
-              <label className="block text-text-muted uppercase tracking-wider mb-1.5 font-semibold text-[11px]">
+              <label className="block text-[#F4EFE6]/80 uppercase tracking-wider mb-1.5 font-semibold text-[11px]">
                 Account Role
               </label>
               <select
                 value={role}
                 onChange={(e) => setRole(e.target.value)}
-                className="w-full bg-[#1A1A1A] border border-white/15 p-3 rounded-sm outline-none text-[#E0E0E0] focus:border-gold transition-colors"
+                className="w-full bg-[#2C4234] border border-[#F4EFE6]/20 p-3 rounded-lg outline-none text-[#F4EFE6] focus:border-[#BA9F7A] transition-colors"
               >
                 <option value="CUSTOMER">Student Buyer</option>
                 <option value="VENDOR">Campus Curator / Seller</option>

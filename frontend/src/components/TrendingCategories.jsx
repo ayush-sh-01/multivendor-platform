@@ -3,77 +3,63 @@ import { CATEGORIES } from '../data/mockData';
 import { useProducts } from '../context/ProductContext';
 
 export default function TrendingCategories() {
-  const { selectedCategory, setSelectedCategory } = useProducts();
+  const { setSelectedCategory } = useProducts();
 
   return (
-    <section id="categories" className="py-16 px-6 md:px-12 max-w-[1440px] mx-auto">
-      <div className="flex flex-col md:flex-row justify-between items-start md:items-end mb-12 pb-5 border-b border-white/10 scroll-reveal">
+    <section id="categories" className="py-20 px-6 md:px-12 max-w-[1440px] mx-auto bg-[#2C4234] text-[#F4EFE6]">
+      <div className="flex flex-col md:flex-row justify-between items-start md:items-end mb-12 pb-6 border-b border-[#F4EFE6]/15">
         <div>
           <div className="flex items-center gap-2 mb-2">
-            <span className="w-6 h-[1px] bg-gold"></span>
-            <span className="text-xs font-sans font-semibold uppercase tracking-[0.2em] text-gold">
-              Curated Archives
+            <span className="w-6 h-[1px] bg-[#BA9F7A]"></span>
+            <span className="text-[11px] uppercase font-sans font-bold tracking-[0.25em] text-[#BA9F7A]">
+              Archive Categories
             </span>
           </div>
-          <h2 className="font-serif text-3xl md:text-4xl font-bold text-white tracking-tight">
-            Trending Categories
+          <h2 className="text-3xl md:text-5xl font-serif font-bold text-[#F4EFE6] tracking-tight">
+            Curated Collections
           </h2>
         </div>
-        <p className="text-sm font-sans text-text-muted max-w-sm mt-3 md:mt-0 leading-relaxed">
-          Hand-vetted student archives categorized by aesthetic movement, fabric weight, and provenance.
+        <p className="text-xs sm:text-sm font-sans text-[#F4EFE6]/70 max-w-sm mt-3 md:mt-0 leading-relaxed">
+          Explore garments sourced directly from art, design, and architecture student closets.
         </p>
       </div>
 
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8">
-        {CATEGORIES.map((cat, idx) => {
-          const isActive = selectedCategory === cat.name;
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        {CATEGORIES.map((cat) => (
+          <div
+            key={cat.id}
+            onClick={() => {
+              setSelectedCategory(
+                cat.id === 'jeans' ? 'Jeans' :
+                cat.id === 'jackets' ? 'Jackets' :
+                cat.id === 'shirts' ? 'Shirts' : 'All'
+              );
+              const el = document.getElementById('curated-finds');
+              if (el) el.scrollIntoView({ behavior: 'smooth' });
+            }}
+            className="product-card group cursor-pointer relative aspect-[3/4] rounded-lg overflow-hidden bg-[#203227] border border-[#F4EFE6]/15 hover:border-[#BA9F7A] transition-all duration-300"
+          >
+            <img
+              src={cat.image}
+              alt={cat.name}
+              className="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-105 filter brightness-[0.88]"
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-[#18261E] via-[#18261E]/30 to-transparent"></div>
 
-          return (
-            <div
-              key={cat.id}
-              onClick={() => {
-                setSelectedCategory(isActive ? null : cat.name);
-                const el = document.getElementById('curated-finds');
-                if (el) el.scrollIntoView({ behavior: 'smooth' });
-              }}
-              className={`product-card group relative aspect-[3/4] cursor-pointer ${
-                isActive ? '!border-gold shadow-goldLg ring-1 ring-gold' : ''
-              } scroll-reveal`}
-              style={{ transitionDelay: `${idx * 0.1}s` }}
-            >
-              {/* Image with zoom effect */}
-              <img
-                src={cat.image}
-                alt={cat.name}
-                className="w-full h-full object-cover grayscale-[40%] group-hover:grayscale-0 group-hover:scale-105 transition-all duration-700 ease-out brightness-90 group-hover:brightness-100"
-              />
-
-              {/* Dark Gradient Scrim */}
-              <div className="absolute inset-0 bg-gradient-to-t from-[#0A0A0A] via-[#0A0A0A]/40 to-transparent"></div>
-
-              {/* Tag Badge */}
-              <div className="absolute top-4 left-4">
-                <span className="text-[10px] uppercase font-sans font-bold px-2.5 py-1 bg-[#0A0A0A]/90 text-gold border border-gold/40 rounded-sm shadow-sm backdrop-blur-md">
-                  {cat.count} Pieces
-                </span>
-              </div>
-
-              {/* Bottom Content */}
-              <div className="absolute bottom-0 left-0 w-full p-6 text-white">
-                <h3 className="font-serif text-2xl font-bold mb-1.5 leading-tight group-hover:text-gold transition-colors duration-300">
-                  {cat.name}
-                </h3>
-                <p className="text-xs text-text-muted font-sans line-clamp-2 mb-4 leading-relaxed">
-                  {cat.desc}
-                </p>
-                <div className="flex items-center gap-1.5 text-[11px] font-sans font-semibold uppercase tracking-wider text-gold group-hover:translate-x-1 transition-transform">
-                  <span>Explore Archive</span>
-                  <span className="material-symbols-outlined text-sm">arrow_forward</span>
-                </div>
-              </div>
+            <div className="absolute top-4 right-4 bg-[#2C4234]/90 border border-[#BA9F7A]/30 text-[#BA9F7A] text-[10px] font-sans font-bold px-2.5 py-1 rounded-full backdrop-blur-md">
+              {cat.count} Pieces
             </div>
-          );
-        })}
+
+            <div className="absolute bottom-0 left-0 p-6 w-full text-[#F4EFE6]">
+              <h3 className="font-serif text-xl font-bold mb-1 text-white group-hover:text-[#BA9F7A] transition-colors">
+                {cat.name}
+              </h3>
+              <p className="text-xs font-sans text-[#F4EFE6]/70 leading-relaxed line-clamp-2">
+                {cat.desc}
+              </p>
+            </div>
+          </div>
+        ))}
       </div>
     </section>
   );

@@ -2,131 +2,136 @@ import React, { useState } from 'react';
 import { useCart } from '../context/CartContext';
 
 export default function MysteryBundle() {
-  const { addToCart } = useCart();
-  const [selectedStyle, setSelectedStyle] = useState('avant-garde');
-  const [bundleTier, setBundleTier] = useState('standard'); // 'standard' ($95) | 'archival' ($165)
+  const { addToCart, showToast } = useCart();
+  const [selectedVibe, setSelectedVibe] = useState('Japanese Minimalist');
+  const [selectedTier, setSelectedTier] = useState('essential'); // 'essential' | 'grail'
 
-  const archetypes = [
-    { id: 'avant-garde', name: 'Avant-Garde & Draped', curator: 'Soren K. (Parsons)' },
-    { id: 'streetwear', name: 'Tokyo 90s Streetwear', curator: 'Maya C. (NYU Tisch)' },
-    { id: 'grunge', name: 'Distressed Heavy Grunge', curator: 'Julian V. (CSM)' }
+  const vibes = [
+    'Japanese Minimalist',
+    'Old Money Prep',
+    '90s Skater / Grunge',
+    'Tactical Gorpcore'
   ];
 
-  const handleAddBundle = () => {
-    const activeArch = archetypes.find(a => a.id === selectedStyle);
-    const isArchival = bundleTier === 'archival';
-
-    const bundleItem = {
-      id: `bundle-${Date.now()}`,
-      name: `Mystery 3-Piece Bundle (${activeArch.name})`,
-      price: isArchival ? 165 : 95,
-      size: "Custom Profile Size",
-      category: "Mystery Bundle",
-      condition: isArchival ? "10/10 Rare Archival" : "9.5/10 Curated Vintage",
-      curator: activeArch.curator,
-      campus: "Curator Network",
-      imageUrl: "https://lh3.googleusercontent.com/aida-public/AB6AXuCckuXRBryDAxhhcSITgQ5kTIJoGXyd2MVEOPr4HyNL8JocCj6WMFgkHu_ReuZhriAJChjch2fJs5apXibAPi_OBWQfU1O4leDQlggZdlA0YIR9-6FtaUTOZwqwBrfiAg95Ic8dTvTnJ0-6QLHAW4_vTMlDl75fmaUvIvreo92LjESMTdIAapYlxsW4Nt_OnwH8em7R9Lwl_Ck0d4pm2wK8QNVmEy2bqXV1ovZwTiOpg6uwKOeHonuazw",
-      inStock: true
+  const handleClaimBundle = () => {
+    const bundleProduct = {
+      id: selectedTier === 'essential' ? 991 : 992,
+      name: `Curated Mystery Bundle (${selectedVibe})`,
+      price: selectedTier === 'essential' ? 95 : 165,
+      size: 'Custom Sized by Curator',
+      category: 'Mystery Bundle',
+      imageUrl: selectedTier === 'essential'
+        ? 'https://image.hm.com/assets/hm/28/be/28bea480630f2e4c2b5ecf0a471c2d4ebcf09a75.jpg?imwidth=1200'
+        : 'https://image.hm.com/assets/hm/5a/dd/5add7d43120cb847f2161bb4062acfcd9fbd4094.jpg?imwidth=1200',
+      description: `3 hand-curated pieces in the ${selectedVibe} aesthetic, inspected by verified campus tastemakers.`,
+      condition: '9.5/10 Inspected',
+      curator: 'Curator Collective',
+      campus: 'All Campuses'
     };
 
-    addToCart(bundleItem);
+    addToCart(bundleProduct);
+    showToast(`Claimed ${selectedVibe} Bundle! Added to bag.`, 'success');
   };
 
   return (
-    <section
-      id="mystery-bundle"
-      className="relative min-h-[85vh] flex items-center py-24 overflow-hidden bg-[#0D0D0D] border-y border-white/10 my-16"
-    >
-      {/* Background Image with dramatic spotlight and mix-blend */}
-      <div className="absolute inset-0 z-0 pointer-events-none">
-        <img
-          src="https://lh3.googleusercontent.com/aida-public/AB6AXuCckuXRBryDAxhhcSITgQ5kTIJoGXyd2MVEOPr4HyNL8JocCj6WMFgkHu_ReuZhriAJChjch2fJs5apXibAPi_OBWQfU1O4leDQlggZdlA0YIR9-6FtaUTOZwqwBrfiAg95Ic8dTvTnJ0-6QLHAW4_vTMlDl75fmaUvIvreo92LjESMTdIAapYlxsW4Nt_OnwH8em7R9Lwl_Ck0d4pm2wK8QNVmEy2bqXV1ovZwTiOpg6uwKOeHonuazw"
-          alt="Mystery Bundle Dark Editorial"
-          className="w-full h-full object-cover opacity-20 mix-blend-luminosity"
-        />
-        <div className="absolute inset-0 bg-gradient-to-r from-[#0D0D0D] via-[#0D0D0D]/90 to-transparent"></div>
-      </div>
+    <section id="mystery-bundle" className="py-20 px-6 md:px-12 max-w-[1440px] mx-auto bg-[#2C4234] text-[#F4EFE6]">
+      <div className="bg-[#203227] border border-[#F4EFE6]/15 rounded-xl p-8 md:p-14 shadow-2xl relative overflow-hidden">
+        {/* Subtle Background Badge */}
+        <div className="absolute -right-10 -bottom-10 opacity-5 pointer-events-none select-none font-serif text-[180px] font-bold text-[#F4EFE6]">
+          ✦
+        </div>
 
-      <div className="relative z-10 w-full max-w-[1440px] mx-auto px-6 md:px-12 grid grid-cols-1 md:grid-cols-12 gap-10 md:gap-14 items-center">
-        <div className="col-span-1 md:col-span-8 scroll-reveal">
+        <div className="max-w-3xl relative z-10">
           <div className="flex items-center gap-2 mb-3">
-            <span className="w-6 h-[1px] bg-gold"></span>
-            <span className="text-gold font-sans text-xs uppercase tracking-[0.25em] font-semibold">
-              The Hunt • Zero Risk Guarantee
+            <span className="w-6 h-[1px] bg-[#BA9F7A]"></span>
+            <span className="text-[11px] uppercase font-sans font-bold tracking-[0.25em] text-[#BA9F7A]">
+              Curator Mystery Box
             </span>
           </div>
 
-          <h2 className="text-4xl md:text-6xl font-serif font-bold leading-none mb-6 text-white tracking-tight">
-            MYSTERY <br />
-            <span className="text-gold italic font-normal">BUNDLE</span>
+          <h2 className="text-3xl md:text-5xl font-serif font-bold text-[#F4EFE6] tracking-tight mb-4">
+            Curated Wardrobe Box
           </h2>
 
-          <p className="text-base font-sans text-[#E0E0E0]/80 max-w-lg mb-8 leading-relaxed">
-            Let our verified campus curators hand-select a personalized 3-piece aesthetic bundle based on your style profile. High risk, high reward. Embrace the unexpected.
+          <p className="text-sm font-sans text-[#F4EFE6]/80 leading-relaxed mb-8">
+            Tell us your aesthetic archetype. Top design school tastemakers will assemble
+            a bespoke box of 3 garments tailored to your measurements.
           </p>
 
-          {/* Style Archetype Selector */}
+          {/* Vibe Selection Pills */}
           <div className="mb-8">
-            <span className="text-xs font-sans uppercase tracking-wider text-text-muted block mb-3 font-semibold">
+            <span className="text-xs uppercase font-sans font-bold tracking-wider text-[#BA9F7A] block mb-3">
               1. Select Style Archetype:
             </span>
-            <div className="flex flex-wrap gap-3">
-              {archetypes.map((arch) => (
+            <div className="flex flex-wrap gap-2.5">
+              {vibes.map((vibe) => (
                 <button
-                  key={arch.id}
-                  onClick={() => setSelectedStyle(arch.id)}
-                  className={`px-4 py-2.5 text-xs font-sans uppercase tracking-wider rounded-sm transition-all duration-300 ${
-                    selectedStyle === arch.id
-                      ? 'bg-gold text-[#0A0A0A] font-bold shadow-gold'
-                      : 'bg-[#141414] text-[#E0E0E0]/80 border border-white/10 hover:border-gold/40'
+                  key={vibe}
+                  onClick={() => setSelectedVibe(vibe)}
+                  className={`px-4 py-2 rounded-full text-xs font-sans font-medium transition-all ${
+                    selectedVibe === vibe
+                      ? 'bg-[#BA9F7A] text-[#203227] font-bold shadow-md'
+                      : 'bg-[#24362A] text-[#F4EFE6]/80 hover:bg-[#2C4234] border border-[#F4EFE6]/15'
                   }`}
                 >
-                  {arch.name}
+                  {vibe}
                 </button>
               ))}
             </div>
           </div>
 
-          {/* Tier Selector */}
+          {/* Tier Selection */}
           <div className="mb-10">
-            <span className="text-xs font-sans uppercase tracking-wider text-text-muted block mb-3 font-semibold">
+            <span className="text-xs uppercase font-sans font-bold tracking-wider text-[#BA9F7A] block mb-3">
               2. Select Curation Tier:
             </span>
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 max-w-lg">
-              <button
-                onClick={() => setBundleTier('standard')}
-                className={`p-4 rounded-sm text-left transition-all duration-300 ${
-                  bundleTier === 'standard'
-                    ? 'border border-gold bg-[#141414] shadow-gold'
-                    : 'border border-white/10 bg-[#141414]/60 hover:border-white/25'
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 max-w-xl">
+              <div
+                onClick={() => setSelectedTier('essential')}
+                className={`p-5 rounded-lg border cursor-pointer transition-all ${
+                  selectedTier === 'essential'
+                    ? 'border-[#BA9F7A] bg-[#24362A] shadow-md'
+                    : 'border-[#F4EFE6]/10 bg-[#1E2E24] hover:border-[#F4EFE6]/30'
                 }`}
               >
-                <div className="font-serif font-bold text-base text-white">Standard Curation</div>
-                <div className="text-xs text-gold font-sans font-bold mt-1">$95 • 3 Curated Pieces</div>
-              </button>
+                <div className="flex justify-between items-baseline mb-1">
+                  <h4 className="font-serif font-bold text-lg text-[#F4EFE6]">Essential Box</h4>
+                  <span className="font-serif text-2xl font-bold text-[#F4EFE6]">$95</span>
+                </div>
+                <p className="text-xs font-sans text-[#F4EFE6]/70">
+                  3 Curated Daily Staples (Denim, Shirts, Heavy Tee)
+                </p>
+              </div>
 
-              <button
-                onClick={() => setBundleTier('archival')}
-                className={`p-4 rounded-sm text-left transition-all duration-300 ${
-                  bundleTier === 'archival'
-                    ? 'border border-gold bg-[#141414] shadow-gold'
-                    : 'border border-white/10 bg-[#141414]/60 hover:border-white/25'
+              <div
+                onClick={() => setSelectedTier('grail')}
+                className={`p-5 rounded-lg border cursor-pointer transition-all ${
+                  selectedTier === 'grail'
+                    ? 'border-[#BA9F7A] bg-[#24362A] shadow-md'
+                    : 'border-[#F4EFE6]/10 bg-[#1E2E24] hover:border-[#F4EFE6]/30'
                 }`}
               >
-                <div className="font-serif font-bold text-base text-white">Rare Archival Tier</div>
-                <div className="text-xs text-gold font-sans font-bold mt-1">$165 • 3 Rare Grails</div>
-              </button>
+                <div className="flex justify-between items-baseline mb-1">
+                  <h4 className="font-serif font-bold text-lg text-[#F4EFE6]">Archival Grail</h4>
+                  <span className="font-serif text-2xl font-bold text-[#F4EFE6]">$165</span>
+                </div>
+                <p className="text-xs font-sans text-[#F4EFE6]/70">
+                  Includes 1 Heavy Jacket / Rare Piece + 2 Essentials
+                </p>
+              </div>
             </div>
           </div>
 
-          {/* Add Bundle Button */}
-          <button
-            onClick={handleAddBundle}
-            className="premium-btn py-4 px-10"
-          >
-            <span>Claim Mystery Bundle ({bundleTier === 'archival' ? '$165' : '$95'})</span>
-            <span className="material-symbols-outlined text-base font-bold">shopping_bag</span>
-          </button>
+          {/* CTA Action */}
+          <div>
+            <button
+              onClick={handleClaimBundle}
+              className="premium-btn py-4 px-10 text-xs"
+            >
+              <span>CLAIM BUNDLE • ${selectedTier === 'essential' ? '95' : '165'}</span>
+              <span className="material-symbols-outlined text-base font-bold">arrow_forward</span>
+            </button>
+          </div>
         </div>
       </div>
     </section>

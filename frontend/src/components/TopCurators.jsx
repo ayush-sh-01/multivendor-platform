@@ -3,95 +3,75 @@ import { TOP_CURATORS } from '../data/mockData';
 import { useProducts } from '../context/ProductContext';
 
 export default function TopCurators() {
-  const { setSearchQuery } = useProducts();
+  const { setSelectedCategory } = useProducts();
 
   return (
-    <section id="top-curators" className="py-20 px-6 md:px-12 max-w-[1440px] mx-auto border-t border-white/10">
-      <div className="flex flex-col md:flex-row justify-between items-start md:items-end mb-12 scroll-reveal">
+    <section id="top-curators" className="py-20 px-6 md:px-12 max-w-[1440px] mx-auto bg-[#2C4234] text-[#F4EFE6]">
+      <div className="flex flex-col md:flex-row justify-between items-start md:items-end mb-12 pb-6 border-b border-[#F4EFE6]/15">
         <div>
           <div className="flex items-center gap-2 mb-2">
-            <span className="w-6 h-[1px] bg-gold"></span>
-            <span className="text-xs font-sans font-semibold uppercase tracking-[0.2em] text-gold">
-              Campus Tastemakers
+            <span className="w-6 h-[1px] bg-[#BA9F7A]"></span>
+            <span className="text-[11px] uppercase font-sans font-bold tracking-[0.25em] text-[#BA9F7A]">
+              Tastemaker Collective
             </span>
           </div>
-          <h2 className="font-serif text-3xl md:text-4xl font-bold text-white tracking-tight">
+          <h2 className="text-3xl md:text-5xl font-serif font-bold text-[#F4EFE6] tracking-tight">
             Top Campus Curators
           </h2>
         </div>
-        <p className="text-sm font-sans text-text-muted max-w-sm mt-3 md:mt-0 leading-relaxed">
-          Ranked by peer verification score, authentic garment provenance, and student satisfaction.
+        <p className="text-xs sm:text-sm font-sans text-[#F4EFE6]/70 max-w-sm mt-3 md:mt-0 leading-relaxed">
+          Follow students whose wardrobes match your aesthetic archetype.
         </p>
       </div>
 
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8">
-        {TOP_CURATORS.map((curator, idx) => (
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        {TOP_CURATORS.map((curator) => (
           <div
             key={curator.id}
-            className="p-6 rounded-sm bg-[#141414] border border-white/10 hover:border-gold/50 transition-all duration-500 hover:-translate-y-2 hover:shadow-gold flex flex-col justify-between scroll-reveal group"
-            style={{ transitionDelay: `${idx * 0.1}s` }}
+            className="p-6 rounded-lg bg-[#203227] border border-[#F4EFE6]/15 hover:border-[#BA9F7A] transition-all duration-300 flex flex-col justify-between"
           >
             <div>
-              {/* Header Avatar & Verified Badge */}
               <div className="flex items-center gap-4 mb-4">
-                <div className="relative w-14 h-14 rounded-full overflow-hidden border border-gold/40 flex-shrink-0">
-                  <img
-                    src={curator.avatar}
-                    alt={curator.name}
-                    className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
-                  />
-                  {curator.verified && (
-                    <span className="absolute bottom-0 right-0 bg-gold text-[#0A0A0A] w-4 h-4 rounded-full flex items-center justify-center text-[10px] font-bold">
-                      ✓
-                    </span>
-                  )}
-                </div>
-
-                <div className="min-w-0">
-                  <h3 className="font-serif text-lg font-bold text-white leading-tight truncate group-hover:text-gold transition-colors">
-                    {curator.name}
+                <img
+                  src={curator.avatar}
+                  alt={curator.name}
+                  className="w-14 h-14 rounded-full object-cover border-2 border-[#BA9F7A]"
+                />
+                <div>
+                  <h3 className="font-serif text-lg font-bold text-[#F4EFE6] flex items-center gap-1">
+                    <span>{curator.name}</span>
+                    <span className="text-[#BA9F7A] text-xs">✓</span>
                   </h3>
-                  <p className="text-xs font-sans text-text-muted">{curator.handle}</p>
+                  <p className="text-xs font-sans text-[#BA9F7A]">{curator.handle}</p>
                 </div>
               </div>
 
-              {/* Campus Badge */}
-              <div className="mb-4">
-                <span className="text-[10px] font-sans font-semibold uppercase tracking-wider px-2.5 py-1 bg-[#1A1A1A] text-gold border border-gold/20 rounded-sm block truncate">
-                  📍 {curator.campus}
-                </span>
+              <div className="text-xs font-sans text-[#F4EFE6]/70 space-y-1.5 mb-6">
+                <p className="flex items-center gap-1.5">
+                  <span>📍</span>
+                  <span>{curator.campus}</span>
+                </p>
+                <p className="flex items-center gap-1.5">
+                  <span>🏷️</span>
+                  <span>{curator.specialty}</span>
+                </p>
               </div>
-
-              {/* Specialty */}
-              <p className="text-xs font-sans text-text-muted line-clamp-2 mb-6 italic leading-relaxed">
-                "{curator.specialty}"
-              </p>
             </div>
 
-            <div>
-              {/* Stats Bar */}
-              <div className="grid grid-cols-2 gap-2 py-3 border-y border-white/10 text-center mb-5 text-xs font-sans">
-                <div>
-                  <span className="text-[10px] text-text-muted block uppercase tracking-wider">Rating</span>
-                  <span className="font-bold text-gold text-sm">★ {curator.rating}</span>
-                </div>
-                <div>
-                  <span className="text-[10px] text-text-muted block uppercase tracking-wider">Curated Drops</span>
-                  <span className="font-bold text-white text-sm">{curator.sales}</span>
-                </div>
+            <div className="pt-4 border-t border-[#F4EFE6]/10 flex items-center justify-between">
+              <div className="text-xs font-sans">
+                <span className="text-[#BA9F7A] font-bold">★ {curator.rating}</span>
+                <span className="text-[#F4EFE6]/50 ml-1.5">({curator.sales} drops)</span>
               </div>
-
-              {/* Filter Curator Collection Button */}
               <button
                 onClick={() => {
-                  setSearchQuery(curator.name);
+                  setSelectedCategory('All');
                   const el = document.getElementById('curated-finds');
                   if (el) el.scrollIntoView({ behavior: 'smooth' });
                 }}
-                className="w-full premium-btn-outline py-2.5 text-[11px]"
+                className="text-[11px] font-sans font-bold uppercase tracking-wider text-[#BA9F7A] hover:text-[#F4EFE6] transition-colors"
               >
-                <span>View Closet</span>
-                <span className="material-symbols-outlined text-sm">arrow_forward</span>
+                View Closet →
               </button>
             </div>
           </div>

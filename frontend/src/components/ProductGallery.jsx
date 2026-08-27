@@ -1,111 +1,78 @@
 import React from 'react';
-import { useProducts } from '../context/ProductContext';
 import ProductCard from './ProductCard';
+import { useProducts } from '../context/ProductContext';
 
 export default function ProductGallery() {
-  const { products, selectedCategory, setSelectedCategory, loading, searchQuery, setSearchQuery } = useProducts();
+  const {
+    filteredProducts,
+    selectedCategory,
+    setSelectedCategory,
+    loading
+  } = useProducts();
 
-  const filterTabs = [
-    { label: 'All Archives', value: null },
-    { label: 'Denim', value: 'Denim' },
-    { label: 'Outerwear', value: 'Outerwear' },
-    { label: 'Knitwear', value: 'Knitwear' },
-    { label: 'Avant-Garde', value: 'Avant-Garde' },
-    { label: 'Bottoms', value: 'Bottoms' }
-  ];
+  const categories = ['All', 'Jeans', 'Jackets', 'Shirts', 'Archival'];
 
   return (
-    <section id="curated-finds" className="py-16 px-6 md:px-12 max-w-[1440px] mx-auto">
-      {/* Header & Filter Controls */}
-      <div className="flex flex-col md:flex-row justify-between items-start md:items-end gap-6 mb-12 pb-5 border-b border-white/10 scroll-reveal">
+    <section id="curated-finds" className="py-20 px-6 md:px-12 max-w-[1440px] mx-auto bg-[#2C4234] text-[#F4EFE6]">
+      {/* Section Header */}
+      <div className="flex flex-col md:flex-row justify-between items-start md:items-end mb-10 pb-6 border-b border-[#F4EFE6]/15">
         <div>
           <div className="flex items-center gap-2 mb-2">
-            <span className="w-6 h-[1px] bg-gold"></span>
-            <span className="text-xs font-sans font-semibold uppercase tracking-[0.2em] text-gold">
-              Live Feed
+            <span className="w-6 h-[1px] bg-[#BA9F7A]"></span>
+            <span className="text-[11px] uppercase font-sans font-bold tracking-[0.25em] text-[#BA9F7A]">
+              Live Archive
             </span>
           </div>
-          <h2 className="font-serif text-3xl md:text-4xl font-bold text-white tracking-tight">
-            Curated Finds
+          <h2 className="text-3xl md:text-5xl font-serif font-bold text-[#F4EFE6] tracking-tight">
+            Curated Garments
           </h2>
         </div>
 
-        {/* Filter Pills */}
-        <div className="flex flex-wrap items-center gap-2.5">
-          {filterTabs.map((tab) => {
-            const isActive = selectedCategory === tab.value;
-            return (
-              <button
-                key={tab.label}
-                onClick={() => setSelectedCategory(tab.value)}
-                className={`text-xs font-sans font-semibold uppercase tracking-wider px-4 py-2 rounded-sm transition-all duration-300 ${
-                  isActive
-                    ? 'bg-gold text-[#0A0A0A] shadow-gold font-bold'
-                    : 'bg-[#141414] text-[#E0E0E0]/80 border border-white/10 hover:border-gold/50 hover:text-gold'
-                }`}
-              >
-                {tab.label}
-              </button>
-            );
-          })}
+        {/* Category Filter Pills */}
+        <div className="flex flex-wrap gap-2 mt-4 md:mt-0">
+          {categories.map((cat) => (
+            <button
+              key={cat}
+              onClick={() => setSelectedCategory(cat)}
+              className={`px-4 py-2 rounded-full text-xs font-sans font-semibold uppercase tracking-wider transition-all duration-300 ${
+                selectedCategory === cat
+                  ? 'bg-[#F4EFE6] text-[#B56653] shadow-md scale-105'
+                  : 'bg-[#203227] text-[#F4EFE6]/75 hover:text-[#F4EFE6] hover:bg-[#24362A] border border-[#F4EFE6]/15'
+              }`}
+            >
+              {cat}
+            </button>
+          ))}
         </div>
       </div>
 
-      {/* Active Search / Category Indicator */}
-      {(searchQuery || selectedCategory) && (
-        <div className="flex items-center gap-2 mb-8 text-xs font-sans">
-          <span className="text-text-muted">Filtering by:</span>
-          {selectedCategory && (
-            <span className="bg-[#141414] text-gold border border-gold/40 px-3 py-1 rounded-sm flex items-center gap-1.5 shadow-sm">
-              Category: {selectedCategory}
-              <button onClick={() => setSelectedCategory(null)} className="hover:text-white ml-1 font-bold">
-                ✕
-              </button>
-            </span>
-          )}
-          {searchQuery && (
-            <span className="bg-[#141414] text-[#E0E0E0] border border-white/20 px-3 py-1 rounded-sm flex items-center gap-1.5">
-              Search: "{searchQuery}"
-              <button onClick={() => setSearchQuery('')} className="hover:text-gold ml-1 font-bold">
-                ✕
-              </button>
-            </span>
-          )}
-        </div>
-      )}
-
-      {/* Loading state */}
+      {/* Grid of Product Cards */}
       {loading ? (
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 py-12">
-          {[1, 2, 3].map((n) => (
-            <div key={n} className="aspect-[3/4] rounded-sm border border-white/10 bg-[#141414] animate-pulse flex items-center justify-center">
-              <span className="text-xs font-sans text-text-muted uppercase tracking-wider">Loading piece...</span>
-            </div>
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+          {[1, 2, 3, 4, 5, 6].map((i) => (
+            <div key={i} className="aspect-[3/4] bg-[#203227] rounded-lg animate-pulse"></div>
           ))}
         </div>
-      ) : products.length === 0 ? (
-        /* Empty State */
-        <div className="py-20 text-center border border-white/10 bg-[#141414] shadow-darkLg max-w-lg mx-auto p-8 rounded-sm">
-          <span className="material-symbols-outlined text-5xl text-gold/60 mb-2">search_off</span>
-          <h3 className="font-serif text-2xl font-bold mb-2 text-white">No matching pieces found</h3>
-          <p className="text-xs text-text-muted font-sans mb-6">
-            Try adjusting your search terms or clearing category filters.
+      ) : filteredProducts.length === 0 ? (
+        <div className="text-center py-24 bg-[#203227] rounded-lg border border-[#F4EFE6]/10 p-8">
+          <span className="material-symbols-outlined text-5xl text-[#BA9F7A]/50 mb-3 block">
+            inventory_2
+          </span>
+          <h3 className="font-serif text-2xl text-[#F4EFE6] mb-2">No garments found</h3>
+          <p className="text-xs font-sans text-[#F4EFE6]/70 max-w-sm mx-auto mb-6">
+            Try adjusting your search query or reset filters to browse all campus archives.
           </p>
           <button
-            onClick={() => {
-              setSelectedCategory(null);
-              setSearchQuery('');
-            }}
-            className="premium-btn py-2.5 px-6"
+            onClick={() => setSelectedCategory('All')}
+            className="premium-btn py-2.5 px-6 text-xs"
           >
-            Clear Filters
+            Reset Filters
           </button>
         </div>
       ) : (
-        /* Grid */
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-          {products.map((prod, idx) => (
-            <ProductCard key={prod.id} product={prod} delay={idx * 0.08} />
+          {filteredProducts.map((product) => (
+            <ProductCard key={product.id} product={product} />
           ))}
         </div>
       )}

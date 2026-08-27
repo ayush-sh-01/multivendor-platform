@@ -8,69 +8,70 @@ export default function HowItWorks() {
   const { setIsUploadModalOpen } = useProducts();
 
   return (
-    <section id="how-it-works" className="py-20 px-6 md:px-12 max-w-[1440px] mx-auto border-t border-white/10">
-      <div className="flex flex-col md:flex-row justify-between items-start md:items-end mb-14 scroll-reveal">
-        <div>
-          <div className="flex items-center gap-2 mb-2">
-            <span className="w-6 h-[1px] bg-gold"></span>
-            <span className="text-xs font-sans font-semibold uppercase tracking-[0.2em] text-gold">
-              Circular Economy
-            </span>
-          </div>
-          <h2 className="font-serif text-3xl md:text-4xl font-bold text-white tracking-tight">
-            How Campus Curation Works
-          </h2>
+    <section id="how-it-works" className="py-20 px-6 md:px-12 max-w-[1440px] mx-auto bg-[#2C4234] text-[#F4EFE6]">
+      <div className="text-center max-w-2xl mx-auto mb-16">
+        <div className="flex items-center justify-center gap-2 mb-2">
+          <span className="w-6 h-[1px] bg-[#BA9F7A]"></span>
+          <span className="text-[11px] uppercase font-sans font-bold tracking-[0.25em] text-[#BA9F7A]">
+            Campus Circulation
+          </span>
+          <span className="w-6 h-[1px] bg-[#BA9F7A]"></span>
         </div>
-        <p className="text-sm font-sans text-text-muted max-w-md mt-3 md:mt-0 leading-relaxed">
-          We built ThriftCampus to eliminate landfill fashion waste and empower university creators to trade archival style directly without middleman markups.
+        <h2 className="text-3xl md:text-5xl font-serif font-bold text-[#F4EFE6] tracking-tight">
+          How ThriftCampus+ Operates
+        </h2>
+        <p className="text-xs sm:text-sm font-sans text-[#F4EFE6]/70 mt-3 leading-relaxed">
+          Zero delivery pollution. Zero middleman fees. Direct peer-to-peer circulation between verified students.
         </p>
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-        {HOW_IT_WORKS_STEPS.map((step, idx) => (
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-14">
+        {HOW_IT_WORKS_STEPS.map((step) => (
           <div
             key={step.number}
-            className="p-8 rounded-sm bg-[#141414] border border-white/10 hover:border-gold/50 transition-all duration-500 hover:-translate-y-2 hover:shadow-gold flex flex-col justify-between scroll-reveal group"
-            style={{ transitionDelay: `${idx * 0.1}s` }}
+            className="p-8 rounded-lg bg-[#203227] border border-[#F4EFE6]/15 hover:border-[#BA9F7A] transition-all duration-300 flex flex-col justify-between"
           >
             <div>
-              <span className="font-serif text-5xl font-bold text-gold/30 block mb-4 group-hover:text-gold transition-colors duration-300">
+              <span className="font-serif text-4xl font-bold text-[#BA9F7A] block mb-5">
                 {step.number}
               </span>
-              <h3 className="font-serif text-2xl font-bold mb-3 text-white">
+              <h3 className="font-serif text-2xl font-bold text-[#F4EFE6] mb-3">
                 {step.title}
               </h3>
-              <p className="text-sm font-sans text-text-muted leading-relaxed">
+              <p className="text-xs sm:text-sm font-sans text-[#F4EFE6]/70 leading-relaxed">
                 {step.desc}
               </p>
             </div>
-
-            <div className="mt-8 pt-4 border-t border-white/10 flex items-center justify-between text-xs font-sans text-text-muted">
-              <span className="uppercase tracking-wider">Step {step.number} of 03</span>
-              <span className="material-symbols-outlined text-base text-gold">verified</span>
+            <div className="mt-8 pt-4 border-t border-[#F4EFE6]/10 flex items-center gap-2 text-xs font-sans text-[#BA9F7A]">
+              <span>Verified Campus Step</span>
+              <span>✓</span>
             </div>
           </div>
         ))}
       </div>
 
-      {/* CTA Box in Dark Gold Glassmorphism */}
-      <div className="mt-14 p-8 md:p-10 rounded-sm bg-gradient-to-r from-[#181818] via-[#141414] to-[#181818] border border-gold/30 flex flex-col md:flex-row justify-between items-center gap-6 shadow-darkLg scroll-reveal">
+      {/* Seller CTA Box */}
+      <div className="p-8 md:p-10 rounded-xl bg-[#24362A] border border-[#BA9F7A]/30 flex flex-col md:flex-row items-center justify-between gap-6">
         <div>
-          <h4 className="font-serif text-2xl md:text-3xl font-bold text-white mb-2">
-            Have clothes in your dorm closet?
-          </h4>
-          <p className="text-xs md:text-sm font-sans text-text-muted">
-            Upload in under 2 minutes. Get paid directly or trade for campus archival grails.
+          <h3 className="font-serif text-2xl font-bold text-[#F4EFE6] mb-1">
+            Have Curated Clothes Sitting in Your Dorm?
+          </h3>
+          <p className="text-xs sm:text-sm font-sans text-[#F4EFE6]/70">
+            List in 60 seconds. Keep 100% of your earnings. Hand off at your student center.
           </p>
         </div>
         <button
           onClick={() => {
-            if (!isAuthenticated) openAuth('login');
-            else setIsUploadModalOpen(true);
+            if (!isAuthenticated) {
+              openAuth('register');
+            } else {
+              setIsUploadModalOpen(true);
+            }
           }}
-          className="premium-btn py-3.5 px-8 whitespace-nowrap"
+          className="premium-btn py-3.5 px-8 text-xs whitespace-nowrap shrink-0"
         >
-          Start Curating Now
+          <span>Start Selling on Campus</span>
+          <span className="material-symbols-outlined text-base">arrow_forward</span>
         </button>
       </div>
     </section>

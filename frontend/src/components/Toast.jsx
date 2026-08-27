@@ -12,12 +12,12 @@ export default function Toast() {
   return (
     <div className="fixed bottom-6 right-6 z-50 animate-slideUp">
       <div
-        className={`px-5 py-3.5 rounded-sm border shadow-goldLg flex items-center gap-3 text-xs font-sans font-semibold uppercase tracking-wider backdrop-blur-xl ${
+        className={`px-5 py-3.5 rounded-full border shadow-2xl flex items-center gap-3 text-xs font-sans font-semibold uppercase tracking-wider backdrop-blur-xl ${
           isError
-            ? 'bg-[#181010] text-[#ffb4ab] border-red-500/40'
+            ? 'bg-[#3A1E1E] text-red-200 border-red-400/40'
             : isInfo
-            ? 'bg-[#141414] text-[#E0E0E0] border-white/20'
-            : 'bg-[#141414] text-gold border-gold/50 shadow-gold'
+            ? 'bg-[#203227] text-[#F4EFE6] border-[#F4EFE6]/20'
+            : 'bg-[#B56653] text-[#F4EFE6] border-white/20'
         }`}
       >
         <span className="material-symbols-outlined text-lg">

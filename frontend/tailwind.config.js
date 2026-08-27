@@ -8,41 +8,41 @@ export default {
   theme: {
     extend: {
       colors: {
-        gold: {
-          DEFAULT: "#D4AF37",
-          hover: "#C5A059",
-          light: "#F3E5AB",
-          dark: "#997A15",
-          muted: "rgba(212, 175, 55, 0.15)",
-          border: "rgba(212, 175, 55, 0.3)"
+        forest: {
+          DEFAULT: "#2C4234",
+          dark: "#203227",
+          darker: "#18261E",
+          card: "#24362A",
+          light: "#35503F",
+          border: "rgba(244, 239, 230, 0.15)"
         },
-        dark: {
-          bg: "#0A0A0A",
-          surface: "#141414",
-          card: "#181818",
-          surface2: "#1E1E1E",
-          surface3: "#262626",
-          border: "#222222",
-          borderHover: "#333333"
+        cream: {
+          DEFAULT: "#F4EFE6",
+          light: "#FAF7F2",
+          dim: "rgba(244, 239, 230, 0.7)",
+          border: "rgba(244, 239, 230, 0.25)"
         },
-        text: {
-          light: "#E0E0E0",
-          muted: "#9E9E9E",
-          dim: "#6B6B6B"
+        brass: {
+          DEFAULT: "#BA9F7A",
+          hover: "#A88C67",
+          light: "#CDB696",
+          dark: "#967B56"
+        },
+        terracotta: {
+          DEFAULT: "#B56653",
+          hover: "#9E5442",
+          light: "#C87865",
+          dark: "#8F4433"
         }
       },
       fontFamily: {
-        serif: ["Playfair Display", "serif"],
-        sans: ["Inter", "sans-serif"]
+        serif: ["Playfair Display", "Merriweather", "Georgia", "serif"],
+        sans: ["Inter", "Helvetica Neue", "Roboto", "sans-serif"]
       },
       boxShadow: {
-        gold: "0 10px 25px rgba(212, 175, 55, 0.2)",
-        goldLg: "0 20px 50px rgba(212, 175, 55, 0.15)",
-        darkLg: "0 25px 60px rgba(0, 0, 0, 0.9)",
-        floating: "0 20px 40px -15px rgba(0, 0, 0, 0.7)"
-      },
-      letterSpacing: {
-        widestLuxe: "0.2em"
+        heritage: "0 15px 35px rgba(0, 0, 0, 0.35)",
+        cardLg: "0 20px 45px rgba(0, 0, 0, 0.4)",
+        cardTerracotta: "0 15px 35px rgba(181, 102, 83, 0.3)"
       }
     }
   },
