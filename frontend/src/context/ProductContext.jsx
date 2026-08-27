@@ -6,21 +6,25 @@ const ProductContext = createContext();
 
 export function ProductProvider({ children }) {
   const [products, setProducts] = useState(INITIAL_PRODUCTS);
-  const [selectedCategory, setSelectedCategory] = useState(null);
+  const [selectedCategory, setSelectedCategory] = useState('All');
   const [searchQuery, setSearchQuery] = useState('');
   const [loading, setLoading] = useState(false);
   const [quickViewProduct, setQuickViewProduct] = useState(null);
   const [isUploadModalOpen, setIsUploadModalOpen] = useState(false);
 
   useEffect(() => {
-    loadProducts(selectedCategory);
+    loadProducts(selectedCategory === 'All' ? null : selectedCategory);
   }, [selectedCategory]);
 
   const loadProducts = async (cat = null) => {
     setLoading(true);
     try {
       const data = await apiService.getProducts(cat);
-      setProducts(data);
+      if (data && data.length > 0) {
+        setProducts(data);
+      } else {
+        setProducts(INITIAL_PRODUCTS);
+      }
     } catch {
       setProducts(INITIAL_PRODUCTS);
     } finally {
@@ -46,7 +50,9 @@ export function ProductProvider({ children }) {
 
     const matchesCategory =
       !selectedCategory ||
-      (p.category && p.category.toLowerCase() === selectedCategory.toLowerCase());
+      selectedCategory === 'All' ||
+      (p.category && p.category.toLowerCase().includes(selectedCategory.toLowerCase())) ||
+      (selectedCategory.toLowerCase().includes(p.category.toLowerCase()));
 
     return matchesSearch && matchesCategory;
   });
@@ -55,6 +61,7 @@ export function ProductProvider({ children }) {
     <ProductContext.Provider
       value={{
         products: filteredProducts,
+        filteredProducts,
         allProducts: products,
         loading,
         selectedCategory,
@@ -66,7 +73,7 @@ export function ProductProvider({ children }) {
         isUploadModalOpen,
         setIsUploadModalOpen,
         addProduct,
-        refreshProducts: () => loadProducts(selectedCategory)
+        refreshProducts: () => loadProducts(selectedCategory === 'All' ? null : selectedCategory)
       }}
     >
       {children}

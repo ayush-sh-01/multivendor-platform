@@ -1,10 +1,13 @@
 import { useRef, useEffect } from 'react';
 
 /**
- * Custom hook providing smooth 3D tilt physics and light glare on hover
+ * Safe, performant custom hook for subtle card hover tilt
  */
-export function useTilt(options = { max: 12, scale: 1.02, speed: 400 }) {
+export function useTilt(options = {}) {
   const elementRef = useRef(null);
+  const max = options.max || 6;
+  const scale = options.scale || 1.015;
+  const speed = options.speed || 400;
 
   useEffect(() => {
     const el = elementRef.current;
@@ -14,7 +17,7 @@ export function useTilt(options = { max: 12, scale: 1.02, speed: 400 }) {
 
     const onMouseEnter = () => {
       bounds = el.getBoundingClientRect();
-      el.style.transition = `transform ${options.speed}ms cubic-bezier(0.03, 0.98, 0.52, 0.99)`;
+      el.style.transition = `transform ${speed}ms cubic-bezier(0.03, 0.98, 0.52, 0.99)`;
     };
 
     const onMouseMove = (e) => {
@@ -25,14 +28,14 @@ export function useTilt(options = { max: 12, scale: 1.02, speed: 400 }) {
       const xPct = mouseX / bounds.width - 0.5;
       const yPct = mouseY / bounds.height - 0.5;
 
-      const tiltX = (yPct * -options.max).toFixed(2);
-      const tiltY = (xPct * options.max).toFixed(2);
+      const tiltX = (yPct * -max).toFixed(2);
+      const tiltY = (xPct * max).toFixed(2);
 
-      el.style.transform = `perspective(1000px) rotateX(${tiltX}deg) rotateY(${tiltY}deg) scale3d(${options.scale}, ${options.scale}, ${options.scale})`;
+      el.style.transform = `perspective(1000px) rotateX(${tiltX}deg) rotateY(${tiltY}deg) scale3d(${scale}, ${scale}, ${scale})`;
     };
 
     const onMouseLeave = () => {
-      el.style.transition = `transform ${options.speed}ms cubic-bezier(0.03, 0.98, 0.52, 0.99)`;
+      el.style.transition = `transform ${speed}ms cubic-bezier(0.03, 0.98, 0.52, 0.99)`;
       el.style.transform = `perspective(1000px) rotateX(0deg) rotateY(0deg) scale3d(1, 1, 1)`;
     };
 
@@ -45,7 +48,7 @@ export function useTilt(options = { max: 12, scale: 1.02, speed: 400 }) {
       el.removeEventListener('mousemove', onMouseMove);
       el.removeEventListener('mouseleave', onMouseLeave);
     };
-  }, [options]);
+  }, [max, scale, speed]);
 
   return elementRef;
 }

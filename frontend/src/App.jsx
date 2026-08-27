@@ -2,10 +2,8 @@ import React from 'react';
 import { AuthProvider } from './context/AuthContext';
 import { CartProvider } from './context/CartContext';
 import { ProductProvider } from './context/ProductContext';
-import { useScrollReveal } from './hooks/useScrollReveal';
 
 // Components
-import ShaderBackground from './components/ShaderBackground';
 import Navbar from './components/Navbar';
 import HeroSection from './components/HeroSection';
 import MarqueeBanner from './components/MarqueeBanner';
@@ -24,18 +22,13 @@ import AuthModal from './components/AuthModal';
 import Toast from './components/Toast';
 
 function MainContent() {
-  useScrollReveal();
-
   return (
-    <div className="min-h-screen flex flex-col bg-surface text-on-surface">
-      {/* Interactive WebGL Noise Shader */}
-      <ShaderBackground />
-
+    <div className="min-h-screen flex flex-col bg-[#2C4234] text-[#F4EFE6]">
       {/* Top Navbar */}
       <Navbar />
 
       {/* Main Flow */}
-      <main className="flex-1">
+      <main className="flex-1 w-full">
         <HeroSection />
         <MarqueeBanner />
         <TrendingCategories />
