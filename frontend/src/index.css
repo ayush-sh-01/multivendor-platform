@@ -1,0 +1,109 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components {
+  /* Classy, Pill-Shaped Primary Gold Button with Minimal Soft Glow */
+  .premium-btn {
+    border-radius: 50px;
+    padding: 12px 28px;
+    background-color: #D4AF37;
+    color: #0A0A0A;
+    border: 1px solid #D4AF37;
+    text-transform: uppercase;
+    font-family: 'Inter', sans-serif;
+    font-weight: 600;
+    font-size: 0.75rem;
+    letter-spacing: 1.5px;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    transition: all 0.2s ease-out;
+  }
+  .premium-btn:hover {
+    transform: translateY(-2px);
+    background-color: #C5A059;
+    box-shadow: 0 4px 12px rgba(212, 175, 55, 0.15); /* Minimal subtle glow */
+  }
+
+  /* Classy, Pill-Shaped Secondary Outline Button */
+  .premium-btn-outline {
+    border-radius: 50px;
+    padding: 12px 28px;
+    background-color: transparent;
+    color: #D4AF37;
+    border: 1px solid rgba(212, 175, 55, 0.35);
+    text-transform: uppercase;
+    font-family: 'Inter', sans-serif;
+    font-weight: 600;
+    font-size: 0.75rem;
+    letter-spacing: 1.5px;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    transition: all 0.2s ease-out;
+  }
+  .premium-btn-outline:hover {
+    transform: translateY(-2px);
+    background-color: rgba(212, 175, 55, 0.08);
+    border-color: #D4AF37;
+    box-shadow: 0 4px 12px rgba(212, 175, 55, 0.1);
+  }
+
+  /* Luxury Product Card with Subtle 3D Lift & Minimal Edge Illumination */
+  .product-card {
+    background-color: #141414;
+    border: 1px solid #222222;
+    border-radius: 4px;
+    overflow: hidden;
+    transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s ease, border-color 0.4s ease;
+  }
+  .product-card:hover {
+    transform: translateY(-6px) scale(1.01);
+    border-color: rgba(212, 175, 55, 0.6);
+    box-shadow: 0 14px 30px rgba(0, 0, 0, 0.7), 0 0 10px rgba(212, 175, 55, 0.06); /* Soft subtle glow */
+  }
+
+  /* Glassmorphism Dark Panel */
+  .dark-glass {
+    background: rgba(18, 18, 18, 0.85);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid rgba(255, 255, 255, 0.06);
+  }
+}
+
+/* Infinite Marquee */
+@keyframes marquee {
+  0% { transform: translateX(0%); }
+  100% { transform: translateX(-50%); }
+}
+
+.animate-marquee {
+  display: flex;
+  width: 200%;
+  animation: marquee 28s linear infinite;
+}
+
+.animate-marquee:hover {
+  animation-play-state: paused;
+}
+
+/* Custom Scrollbar in Dark Gold */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: #0A0A0A;
+}
+::-webkit-scrollbar-thumb {
+  background: #2A2A2A;
+  border-radius: 50px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #D4AF37;
+}
