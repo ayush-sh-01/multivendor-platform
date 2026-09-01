@@ -20,7 +20,7 @@ import UploadModal from './components/UploadModal';
 import CartDrawer from './components/CartDrawer';
 import AuthModal from './components/AuthModal';
 import Toast from './components/Toast';
-
+import Chatbot from './components/Chatbot';
 function MainContent() {
   return (
     <div className="min-h-screen flex flex-col bg-[#2C4234] text-[#F4EFE6]">
@@ -47,6 +47,7 @@ function MainContent() {
       <CartDrawer />
       <AuthModal />
       <Toast />
+      <Chatbot />
     </div>
   );
 }
