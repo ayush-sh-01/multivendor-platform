@@ -47,7 +47,7 @@ export default function Navbar() {
             href="#top-curators"
             className="text-[11px] uppercase tracking-[0.14em] font-sans font-medium text-[#F4EFE6]/80 hover:text-[#BA9F7A] transition-colors"
           >
-            Curators
+            Student Sellers
           </a>
           <a
             href="#mystery-bundle"
@@ -106,7 +106,7 @@ export default function Navbar() {
             )}
           </button>
 
-          {/* Upload Button */}
+          {/* Sell an Item Button */}
           <button
             onClick={() => {
               if (!isAuthenticated) {
@@ -115,32 +115,34 @@ export default function Navbar() {
                 setIsUploadModalOpen(true);
               }
             }}
-            className="hidden sm:inline-flex items-center gap-1 text-[10px] font-sans font-bold uppercase tracking-wider bg-[#B56653] text-[#F4EFE6] px-3 py-1.5 rounded-full hover:bg-[#9E5442] transition-colors shadow-sm"
+            className="inline-flex items-center gap-1.5 text-[11px] font-sans font-bold uppercase tracking-wider bg-[#B56653] text-[#F4EFE6] px-4 py-2 rounded-full hover:bg-[#9E5442] transition-all shadow-sm active:scale-95"
           >
-            <span className="material-symbols-outlined text-xs">add_circle</span>
-            Upload
+            <span className="material-symbols-outlined text-sm">add_circle</span>
+            <span>Sell an Item</span>
           </button>
 
-          {/* Student Profile Pill Button */}
+          {/* User Profile / High-Contrast Log In Button */}
           {isAuthenticated ? (
             <button
               onClick={logout}
-              className="flex items-center gap-1 text-[10px] font-sans text-[#F4EFE6] border border-[#F4EFE6]/30 px-3 py-1.5 rounded-full hover:border-[#BA9F7A] hover:text-[#BA9F7A] transition-all bg-[#203227]"
+              className="flex items-center gap-1.5 text-xs font-sans text-[#F4EFE6] border border-[#BA9F7A]/40 px-3.5 py-1.5 rounded-full hover:border-[#B56653] hover:text-[#FAF7F2] hover:bg-[#B56653]/20 transition-all bg-[#203227] shadow-sm"
               title="Click to Sign Out"
             >
-              <span>👤 {user?.name?.split(' ')[0] || 'Profile'}</span>
-              <span className="text-[#BA9F7A] text-[9px] font-bold">(✓ Verified)</span>
+              <span className="material-symbols-outlined text-sm text-[#BA9F7A]">account_circle</span>
+              <span className="font-medium">{user?.name?.split(' ')[0] || 'Profile'}</span>
+              <span className="text-[#BA9F7A] text-[10px] font-bold">(✓ Verified)</span>
             </button>
           ) : (
             <button
               onClick={() => openAuth('login')}
-              className="flex items-center gap-1 text-[10px] font-sans text-[#F4EFE6] border border-[#F4EFE6]/30 px-3 py-1.5 rounded-full hover:border-[#BA9F7A] hover:text-[#BA9F7A] transition-all bg-[#203227]"
+              className="flex items-center gap-1.5 text-xs font-sans font-bold uppercase tracking-wider bg-[#F4EFE6] text-[#203227] hover:bg-[#FAF7F2] hover:text-[#18261E] px-4 py-2 rounded-full transition-all duration-200 shadow-md border border-[#F4EFE6] hover:scale-105 active:scale-95"
             >
-              <span>👤 Student Profile</span>
-              <span className="text-[#BA9F7A] text-[9px] font-bold">(✓ Verified)</span>
+              <span className="material-symbols-outlined text-sm">login</span>
+              <span>Log In / Join</span>
             </button>
           )}
         </div>
+
       </div>
     </nav>
   );

@@ -5,7 +5,7 @@ import { useAuth } from './AuthContext';
 const CartContext = createContext();
 
 export function CartProvider({ children }) {
-  const { user, token } = useAuth();
+  const { user, token, isAuthenticated, openAuth } = useAuth();
   const [items, setItems] = useState([]);
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
   const [toastMessage, setToastMessage] = useState(null);
@@ -35,6 +35,12 @@ export function CartProvider({ children }) {
   };
 
   const addToCart = (product) => {
+    if (!isAuthenticated) {
+      openAuth('login');
+      showToast('Please log in or join to add pieces to your bag.', 'info');
+      return;
+    }
+
     setItems((prev) => {
       const existing = prev.find((item) => item.id === product.id);
       if (existing) {
@@ -83,6 +89,12 @@ export function CartProvider({ children }) {
   };
 
   const checkout = async () => {
+    if (!isAuthenticated) {
+      openAuth('login');
+      showToast('Please log in or join to place an order.', 'info');
+      return;
+    }
+
     if (items.length === 0) {
       showToast('Your bag is empty.', 'error');
       return;

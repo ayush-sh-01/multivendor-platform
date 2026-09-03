@@ -1,29 +1,23 @@
-# Multi-Stage Dockerfile for Cloud Deployment
-FROM eclipse-temurin:21-jdk-alpine AS build
+# Stage 1: Build the application using Maven
+FROM maven:3.9.5-eclipse-temurin-17 AS build
 WORKDIR /app
 
-# Copy Maven Wrapper and POM first
-COPY pom.xml mvnw ./
-COPY .mvn .mvn
-RUN chmod +x ./mvnw
+# Copy the pom.xml and source code
+COPY pom.xml .
+COPY src ./src
 
-# STEP 1: Download ALL dependencies into a separate cached layer
-# This ensures PostgreSQL driver JAR is downloaded before building
-RUN ./mvnw dependency:resolve -q --no-transfer-progress
+# Build the JAR file (this bundles the backend and static frontend)
+RUN mvn clean package -DskipTests
 
-# STEP 2: Copy source code and build the fat JAR
-COPY src src
-RUN ./mvnw clean package -DskipTests --no-transfer-progress
-
-# Verify PostgreSQL driver IS inside the fat JAR (will print if found)
-RUN jar tf target/*.jar | grep postgresql || echo "WARNING: postgresql driver not found in JAR!"
-
-# Stage 2: Minimalist, Secure Runtime Container
-FROM eclipse-temurin:21-jre-alpine
+# Stage 2: Create the lightweight runtime image
+FROM eclipse-temurin:17-jre-alpine
 WORKDIR /app
-COPY --from=build /app/target/*.jar app.jar
 
+# Copy the executable JAR from the build stage
+COPY --from=build /app/target/multivendor-platform-0.0.1-SNAPSHOT.jar app.jar
+
+# Cloud Run injects the PORT environment variable. We expose 8080 as a default.
 EXPOSE 8080
-ENV PORT=8080
 
+# Run the Spring Boot application
 ENTRYPOINT ["java", "-jar", "app.jar"]

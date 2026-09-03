@@ -82,83 +82,83 @@ public class DataInitializer implements CommandLineRunner {
         vendorRepository.save(vendorLuxe);
 
         // 3. Create Categories
-        Category catHaute = new Category("Haute Parfumerie", "Finest haute perfumery creations crafted with rare essences.");
-        categoryRepository.save(catHaute);
+        Category catJeans = new Category("Jeans & Denim", "Japanese raw selvedge, 90s vintage loose washes, and wide silhouettes.");
+        categoryRepository.save(catJeans);
 
-        Category catArtisan = new Category("Artisan Scents", "Hand-blended perfumes from master independent noses.");
-        categoryRepository.save(catArtisan);
+        Category catJackets = new Category("Jackets & Outerwear", "Heavy tactical parkas, vintage bombers, workwear, and denim jackets.");
+        categoryRepository.save(catJackets);
 
-        Category catPrivate = new Category("Private Reserve", "Exclusive, numbered editions for collectors.");
-        categoryRepository.save(catPrivate);
+        Category catShirts = new Category("Shirts & Tops", "Old money striped oxfords, boxy button-downs, and vintage graphic tees.");
+        categoryRepository.save(catShirts);
 
-        Category catLimited = new Category("Limited Editions", "Seasonal rare harvests and bespoke single-batch extraits.");
-        categoryRepository.save(catLimited);
+        Category catArchival = new Category("Archival Finds", "Curated one-of-one pieces, student designer drops, and rare retro grails.");
+        categoryRepository.save(catArchival);
 
-        // 4. Create Products Matching Google Stitch UI
+        // 4. Create Products Matching ThriftCampus Luxury Clothing Aesthetic
         Product p1 = new Product(
-                "L'Or Éblouissant",
-                "A captivating symphony of golden amber, warm vanilla, and velvet saffron.",
-                350.00,
+                "Raw Selvedge Wide Jeans",
+                "Wide-leg, heavyweight raw Japanese selvedge denim with crisp contrast white stitching and structured drape. Zero synthetic stretch.",
+                95.00,
                 25,
-                "https://lh3.googleusercontent.com/aida-public/AB6AXuCWv4QgXZm4vD3awPH0mrUNbMwUwaiRpFAldrL4GtDVmfPchKVyxs5gRlv1ioD-27sIHxrdj59Sh4X237LL-OG1_wMtB2mzEb55Xdir__xUQHC6SjR1p6Z7pWDIDjNQxs5-QLpGChqhGWhLSbfmbplvqtJ-IFCHTAIbSH7Qo60WTwZOTP1rK2NLY6cTvT_BkQztJh_b3iIrP78r2GMNmNZTyMvjr44S0XaR_Y4rOX96o16IAOFbZdm7AMXJ9samEUSCzQ",
+                "https://images.unsplash.com/photo-1541099649105-f69ad21f3246?auto=format&fit=crop&w=1000&q=80",
                 true,
                 vendorArtisan,
-                catHaute
+                catJeans
         );
 
         Product p2 = new Product(
-                "Noir Absolu",
-                "Deep smoky incense intertwining with rich dark leather and black pepper.",
-                280.00,
+                "Vintage Indigo Loose Denim",
+                "Classic loose fit vintage washed denim with authentic natural fading and relaxed skate silhouette.",
+                85.00,
                 30,
-                "https://lh3.googleusercontent.com/aida-public/AB6AXuCHsesv8nAphX_Tr9sAFaQ8xU-5T1shJgyJvxV2z_BFNjH1EMaY5xsL22qC5XhjhnCRaLZcP_S3HJY-5xuxSqdBigUjK_zpqVyTEcwyQEcBYuu67d4tJk_5n3w6njNFOk-nUBNjDaRe9E8pmjkEHGi29T2cZ-6OyaBxIvBks52eTatSRjEamH4WeAS22-FwZy4QAAkoK6eHA87lKNy9ueMJtBIUM6jLqqDoKLmRKlhFQuGjsqYEo5p_vcrnu-fBosPe2g",
+                "https://images.unsplash.com/photo-1542272604-780c96856592?auto=format&fit=crop&w=1000&q=80",
                 true,
                 vendorHouse,
-                catPrivate
+                catJeans
         );
 
         Product p3 = new Product(
-                "Oud Précieux",
-                "Rare aged Royal Cambodian Agarwood layered over royal damask rose.",
-                420.00,
+                "Striped Old Money Oxford Shirt",
+                "Crisp cotton striped button-down shirt with structured classic collar and tailored cuffs. Timeless archival prep aesthetic.",
+                65.00,
                 15,
-                "https://lh3.googleusercontent.com/aida-public/AB6AXuCb97UUgCXnHLT7F88MU95bBy6SpCvCmwND2vGByJUSYuZ47AwYfox0uL4qsbK22grkvOqNxF7tyZDXrQ6owiQS8iCsveUuspdNK4mCenPWTJvLdTkk9wkx4-VdsRSloMzmQg152imf4FAc66BTVjKtkTjh101xYHe3JYapsNw3eXRCUmhDBBRnCFCmujmXdjZxF91N8WnVSlfXaTcVEGMKkUXCI1AUPcAhTC0ZWzaIITh-XgNFmlcbKnXF0f4smhwv-Q",
+                "https://images.unsplash.com/photo-1596755094514-f87e34085b2c?auto=format&fit=crop&w=1000&q=80",
                 true,
                 vendorLuxe,
-                catLimited
+                catShirts
         );
 
         Product p4 = new Product(
-                "Ambre Nuit",
-                "Nocturnal allure of spicy coriander, patchouli, and incandescent amber crystals.",
-                310.00,
+                "Vintage Sport Activewear Tee",
+                "Heavyweight breathable activewear graphic tee with subtle retro typography and reinforced crew neckline.",
+                45.00,
                 40,
-                "https://lh3.googleusercontent.com/aida-public/AB6AXuB9LpJThFOtYRlJMS6wDU2Ep9e4SBVdt64d8j0wuSUF5iK6AjpgO9abu_pFfzUdV9IFeqwNCKvJRNHsy0TgBT07om7VfO1aA0hEHUiGJaH79QNGgFaOpJIqhDszco4kK5WQBfSpuw3rr4qy7VlXwk0omMtyzm9aHF2VpFonN7iDUzsdK2YTJbjwZelpt8cZHUV86wPh2Y2OLRk_LDFt6iSxdqqDJwt3esH4-oS-kSUh7geRHwjfS_7A",
+                "https://images.unsplash.com/photo-1521572267360-ee0c2909d518?auto=format&fit=crop&w=1000&q=80",
                 true,
                 vendorArtisan,
-                catArtisan
+                catShirts
         );
 
         Product p5 = new Product(
-                "Rose Éternelle",
-                "Morning dewy May roses infused with white cedarwood and crystalline musk.",
-                295.00,
+                "Archival Washed Bomber Jacket",
+                "Washed utility bomber jacket with heavy-gauge industrial zipper, ribbed trims, and authentic vintage distress.",
+                135.00,
                 20,
-                "https://lh3.googleusercontent.com/aida-public/AB6AXuB3ctoofypZpqMsJW6R2cqCXsVXE41kdqxsrcxShUCVfajaV-mbrBRoDUTXVl4zotVIwf8PKkVoBSefeA_nbBl7F6fzwgOF7br9PVsFRaLbdsaiULLYI1xvM5VXhrt8ZbhasozJuSDDZw65niP75f-oJnRQUd1ltrZjYzwQ45JOlzQWGk8H7Wty0r6sCXcdiK9JID9kSYfGajKZrvHdjirxzOj94rHGwRfth4ub2d_Nhxx2o93XEVBUUBQOA5zEWxm4ww",
+                "https://images.unsplash.com/photo-1551028719-00167b16eac5?auto=format&fit=crop&w=1000&q=80",
                 true,
                 vendorHouse,
-                catHaute
+                catJackets
         );
 
         Product p6 = new Product(
-                "Bleu Mystique",
-                "Oceanic freshness fused with aristocratic bergamot, iris, and mineral vetiver.",
-                340.00,
+                "Heavy Tactical Utility Parka",
+                "Structured oversized utility parka with storm flap, metallic snaps, storm cuffs, and deep cargo bellows pockets.",
+                165.00,
                 18,
-                "https://lh3.googleusercontent.com/aida-public/AB6AXuC05NkCuAwYUEXuxqYBtvNAf04dcg7CS7FfUjrwy_oTuim1uDv9wQGOHnmJGXtccAKDtXfLuKatxiBuGyn_lnkIYKXY2OiSYI_w030krC_Ec9fXMNZHMoFybiHidwgfT4qgoNJ9PKEpgPPlMqbBbuB6CjVhIlc_2PR-xSZT9OG7WKi54fRiRMK0fXwMkC1eQ5J174z3lKkRz7IoqDb0TcKxOqxmFrfC1MuMi9RCZ4jl7MpEOx4Zf98U",
+                "https://images.unsplash.com/photo-1544441893-675973e31985?auto=format&fit=crop&w=1000&q=80",
                 true,
                 vendorLuxe,
-                catPrivate
+                catJackets
         );
 
         productRepository.save(p1);
@@ -168,6 +168,7 @@ public class DataInitializer implements CommandLineRunner {
         productRepository.save(p5);
         productRepository.save(p6);
 
-        System.out.println("✅ DEZEL Platform seeded successfully with 5 accounts, 3 vendors, 4 categories, and 6 luxury products!");
+        System.out.println("✅ ThriftCampus Platform seeded successfully with student accounts, vendors, clothing categories, and archival pieces!");
     }
+
 }

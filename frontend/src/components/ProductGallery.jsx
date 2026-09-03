@@ -64,10 +64,12 @@ export default function ProductGallery() {
           </p>
           <button
             onClick={() => setSelectedCategory('All')}
-            className="premium-btn py-2.5 px-6 text-xs"
+            className="px-8 py-3 rounded-full bg-[#F4EFE6] text-[#18261E] hover:bg-[#FAF7F2] font-sans font-bold text-xs uppercase tracking-wider transition-all duration-300 shadow-md hover:shadow-lg inline-flex items-center gap-2"
           >
-            Reset Filters
+            <span>Reset Filters</span>
+            <span className="material-symbols-outlined text-sm font-bold">restart_alt</span>
           </button>
+
         </div>
       ) : (
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">

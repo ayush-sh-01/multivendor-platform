@@ -9,7 +9,7 @@ export const INITIAL_PRODUCTS = [
     curator: "Maya Chen",
     campus: "NYU Tisch",
     description: "Wide-leg, heavyweight raw Japanese selvedge denim with crisp contrast white stitching and structured drape. Zero synthetic stretch.",
-    imageUrl: "https://image.hm.com/assets/hm/8d/8f/8d8fc6e717af07f733457a909d7c9246a81703bf.jpg?imwidth=1200",
+    imageUrl: "https://images.unsplash.com/photo-1541099649105-f69ad21f3246?auto=format&fit=crop&w=1000&q=80",
     tags: ["Selvedge", "Wide Silhouette", "Raw"],
     inStock: true
   },
@@ -23,7 +23,7 @@ export const INITIAL_PRODUCTS = [
     curator: "Soren K.",
     campus: "Parsons Paris",
     description: "Classic loose fit vintage washed denim with authentic natural fading and relaxed skate silhouette.",
-    imageUrl: "https://image.hm.com/assets/hm/11/f1/11f1da0f4ffb3bda9564e09473484288ffbe29c5.jpg?imwidth=1200",
+    imageUrl: "https://images.unsplash.com/photo-1542272604-780c96856592?auto=format&fit=crop&w=1000&q=80",
     tags: ["Loose Fit", "Vintage Wash", "90s"],
     inStock: true
   },
@@ -37,7 +37,7 @@ export const INITIAL_PRODUCTS = [
     curator: "Julian V.",
     campus: "Central Saint Martins",
     description: "Crisp cotton striped button-down shirt with structured classic collar and tailored cuffs. Timeless archival prep aesthetic.",
-    imageUrl: "https://image.hm.com/assets/hm/28/be/28bea480630f2e4c2b5ecf0a471c2d4ebcf09a75.jpg?imwidth=1200",
+    imageUrl: "https://images.unsplash.com/photo-1596755094514-f87e34085b2c?auto=format&fit=crop&w=1000&q=80",
     tags: ["Oxford", "Old Money", "Striped"],
     inStock: true
   },
@@ -51,7 +51,7 @@ export const INITIAL_PRODUCTS = [
     curator: "Chloe Bennett",
     campus: "RISD",
     description: "Heavyweight breathable activewear graphic tee with subtle retro typography and reinforced crew neckline.",
-    imageUrl: "https://mythriftkart.com/wp-content/uploads/2024/09/IMG_4359-scaled.jpeg",
+    imageUrl: "https://images.unsplash.com/photo-1521572267360-ee0c2909d518?auto=format&fit=crop&w=1000&q=80",
     tags: ["Activewear", "Vintage", "Streetwear"],
     inStock: true
   },
@@ -64,8 +64,8 @@ export const INITIAL_PRODUCTS = [
     condition: "9.6/10 Near Mint",
     curator: "Soren K.",
     campus: "Parsons Paris",
-    description: "Washed utility denim bomber jacket with heavy-gauge industrial zipper, ribbed trims, and authentic vintage distress.",
-    imageUrl: "https://mythriftkart.com/wp-content/uploads/2024/08/img_2558-4-scaled.jpeg",
+    description: "Washed utility bomber jacket with heavy-gauge industrial zipper, ribbed trims, and authentic vintage distress.",
+    imageUrl: "https://images.unsplash.com/photo-1551028719-00167b16eac5?auto=format&fit=crop&w=1000&q=80",
     tags: ["Bomber", "Utility", "Heavy Denim"],
     inStock: true
   },
@@ -79,42 +79,44 @@ export const INITIAL_PRODUCTS = [
     curator: "Maya Chen",
     campus: "NYU Tisch",
     description: "Structured oversized utility parka with storm flap, metallic snaps, storm cuffs, and deep cargo bellows pockets.",
-    imageUrl: "https://image.hm.com/assets/hm/5a/dd/5add7d43120cb847f2161bb4062acfcd9fbd4094.jpg?imwidth=1200",
+    imageUrl: "https://images.unsplash.com/photo-1544441893-675973e31985?auto=format&fit=crop&w=1000&q=80",
     tags: ["Parka", "Outerwear", "Technical"],
     inStock: true
   }
 ];
+
 
 export const CATEGORIES = [
   {
     id: "jeans",
     name: "Jeans & Denim",
     count: 48,
-    image: "https://image.hm.com/assets/hm/8d/8f/8d8fc6e717af07f733457a909d7c9246a81703bf.jpg?imwidth=1200",
+    image: "https://images.unsplash.com/photo-1541099649105-f69ad21f3246?auto=format&fit=crop&w=1000&q=80",
     desc: "Japanese raw selvedge, 90s vintage loose washes, and wide silhouettes."
   },
   {
     id: "jackets",
     name: "Jackets & Outerwear",
     count: 36,
-    image: "https://image.hm.com/assets/hm/5a/dd/5add7d43120cb847f2161bb4062acfcd9fbd4094.jpg?imwidth=1200",
+    image: "https://images.unsplash.com/photo-1544441893-675973e31985?auto=format&fit=crop&w=1000&q=80",
     desc: "Heavy tactical parkas, vintage bombers, workwear, and denim jackets."
   },
   {
     id: "shirts",
     name: "Shirts & Tops",
     count: 42,
-    image: "https://image.hm.com/assets/hm/28/be/28bea480630f2e4c2b5ecf0a471c2d4ebcf09a75.jpg?imwidth=1200",
+    image: "https://images.unsplash.com/photo-1596755094514-f87e34085b2c?auto=format&fit=crop&w=1000&q=80",
     desc: "Old money striped oxfords, boxy button-downs, and vintage graphic tees."
   },
   {
     id: "vintage",
     name: "Archival Finds",
     count: 24,
-    image: "https://mythriftkart.com/wp-content/uploads/2024/08/img_2558-4-scaled.jpeg",
+    image: "https://images.unsplash.com/photo-1551028719-00167b16eac5?auto=format&fit=crop&w=1000&q=80",
     desc: "Curated one-of-one pieces, student designer drops, and rare retro grails."
   }
 ];
+
 
 export const TOP_CURATORS = [
   {

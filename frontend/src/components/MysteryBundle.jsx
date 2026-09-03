@@ -21,8 +21,8 @@ export default function MysteryBundle() {
       size: 'Custom Sized by Curator',
       category: 'Mystery Bundle',
       imageUrl: selectedTier === 'essential'
-        ? 'https://image.hm.com/assets/hm/28/be/28bea480630f2e4c2b5ecf0a471c2d4ebcf09a75.jpg?imwidth=1200'
-        : 'https://image.hm.com/assets/hm/5a/dd/5add7d43120cb847f2161bb4062acfcd9fbd4094.jpg?imwidth=1200',
+        ? 'https://images.unsplash.com/photo-1541099649105-f69ad21f3246?auto=format&fit=crop&w=1000&q=80'
+        : 'https://images.unsplash.com/photo-1544441893-675973e31985?auto=format&fit=crop&w=1000&q=80',
       description: `3 hand-curated pieces in the ${selectedVibe} aesthetic, inspected by verified campus tastemakers.`,
       condition: '9.5/10 Inspected',
       curator: 'Curator Collective',
@@ -126,12 +126,13 @@ export default function MysteryBundle() {
           <div>
             <button
               onClick={handleClaimBundle}
-              className="premium-btn py-4 px-10 text-xs"
+              className="px-8 py-3.5 rounded-full bg-[#F4EFE6] text-[#18261E] hover:bg-[#FAF7F2] font-sans font-bold text-xs uppercase tracking-wider transition-all duration-300 shadow-xl hover:shadow-2xl hover:scale-105 active:scale-95 inline-flex items-center gap-2 border border-[#F4EFE6]"
             >
               <span>CLAIM BUNDLE • ${selectedTier === 'essential' ? '95' : '165'}</span>
               <span className="material-symbols-outlined text-base font-bold">arrow_forward</span>
             </button>
           </div>
+
         </div>
       </div>
     </section>

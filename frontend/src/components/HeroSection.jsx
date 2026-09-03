@@ -87,11 +87,11 @@ export default function HeroSection() {
           </div>
 
           {/* Call To Action Row */}
-          <div className="flex flex-wrap items-center gap-5 pt-1">
+          <div className="flex flex-wrap items-center gap-6 sm:gap-8 pt-2">
             {/* Primary Button */}
             <a
               href="#curated-finds"
-              className="premium-btn py-2.5 px-6 text-xs"
+              className="px-8 py-3.5 rounded-full bg-[#F4EFE6] text-[#18261E] hover:bg-[#BA9F7A] hover:text-[#18261E] font-sans font-bold text-xs uppercase tracking-[0.14em] transition-all duration-300 shadow-lg hover:shadow-xl hover:-translate-y-0.5 inline-flex items-center justify-center gap-2"
             >
               <span>SHOP COLLECTION</span>
               <span className="material-symbols-outlined text-sm font-bold">arrow_downward</span>
@@ -100,12 +100,13 @@ export default function HeroSection() {
             {/* Secondary Link */}
             <a
               href="#how-it-works"
-              className="font-sans text-xs uppercase tracking-[0.14em] font-semibold text-[#BA9F7A] hover:text-[#F4EFE6] transition-colors flex items-center gap-1"
+              className="font-sans text-xs uppercase tracking-[0.14em] font-semibold text-[#BA9F7A] hover:text-[#F4EFE6] transition-colors inline-flex items-center gap-1.5 group py-2"
             >
               <span>See How It Works</span>
-              <span className="text-xs">→</span>
+              <span className="transition-transform duration-200 group-hover:translate-x-1 text-sm font-bold">→</span>
             </a>
           </div>
+
         </div>
 
         {/* ================= RIGHT COLUMN (Photographic Background + Floating Card) ================= */}
