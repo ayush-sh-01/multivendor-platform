@@ -2,47 +2,79 @@
 @tailwind components;
 @tailwind utilities;
 
+@layer base {
+  body {
+    background-color: #121212;
+    color: #DCDCDC;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  }
+
+  h1, h2, h3, .font-serif {
+    font-family: 'Playfair Display', Georgia, serif;
+  }
+}
+
+/* ========================================================
+   CRUCIAL BACKGROUND TEXTURE: GEOMETRIC DIAMOND / CHEVRON
+   ======================================================== */
+.bg-dark-luxury-pattern {
+  background-color: #121212;
+  background-image: 
+    radial-gradient(ellipse at 50% 0%, rgba(212, 154, 122, 0.08), transparent 70%),
+    url("data:image/svg+xml,%3Csvg width='48' height='48' viewBox='0 0 48 48' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' stroke='%23D49A7A' stroke-width='0.75' stroke-opacity='0.08'%3E%3Cpath d='M24 0 L48 24 L24 48 L0 24 Z'/%3E%3Cpath d='M24 8 L40 24 L24 40 L8 24 Z'/%3E%3Cpath d='M0 0 L12 12 M36 12 L48 0 M0 48 L12 36 M36 36 L48 48'/%3E%3Ccircle cx='24' cy='24' r='1.2' fill='%23D49A7A' fill-opacity='0.08'/%3E%3C/g%3E%3C/svg%3E");
+  background-attachment: fixed;
+}
+
+.bg-charcoal-pattern {
+  background-color: #161616;
+  background-image: url("data:image/svg+xml,%3Csvg width='48' height='48' viewBox='0 0 48 48' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' stroke='%23D49A7A' stroke-width='0.75' stroke-opacity='0.06'%3E%3Cpath d='M24 0 L48 24 L24 48 L0 24 Z'/%3E%3Cpath d='M24 8 L40 24 L24 40 L8 24 Z'/%3E%3Cpath d='M0 0 L12 12 M36 12 L48 0 M0 48 L12 36 M36 36 L48 48'/%3E%3C/g%3E%3C/svg%3E");
+}
+
+.bg-subtle-pattern {
+  background-image: url("data:image/svg+xml,%3Csvg width='40' height='40' viewBox='0 0 40 40' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' stroke='%23D49A7A' stroke-width='0.6' stroke-opacity='0.06'%3E%3Cpath d='M20 0 L40 20 L20 40 L0 20 Z'/%3E%3C/g%3E%3C/svg%3E");
+}
+
 @layer components {
-  /* Primary Heritage Pill Button: Pale Cream Background with Dark Forest Text */
-  .premium-btn {
+  /* ========================================================
+     STRICTLY PILL-SHAPED BUTTONS & CTAS
+     ======================================================== */
+  .btn-rosegold-pill {
     border-radius: 9999px;
     padding: 12px 32px;
-    background-color: #F4EFE6;
-    color: #18261E;
-    border: 1px solid #F4EFE6;
+    background-color: #D49A7A;
+    color: #121212;
+    border: 1px solid #D49A7A;
     text-transform: uppercase;
     font-family: 'Inter', sans-serif;
     font-weight: 700;
     font-size: 0.75rem;
-    letter-spacing: 1.5px;
+    letter-spacing: 0.16em;
     cursor: pointer;
     display: inline-flex;
     align-items: center;
     justify-content: center;
     gap: 0.5rem;
     transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
-    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.15);
+    box-shadow: 0 4px 16px rgba(212, 154, 122, 0.25);
   }
-  .premium-btn:hover {
+  .btn-rosegold-pill:hover {
     transform: translateY(-2px);
-    background-color: #FAF7F2;
-    color: #0F1A14;
-    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25);
+    background-color: #E4B399;
+    border-color: #E4B399;
+    box-shadow: 0 6px 24px rgba(212, 154, 122, 0.4);
   }
 
-
-  /* Secondary Brass / Cream Outline Button */
-  .premium-btn-outline {
+  .btn-outline-pill {
     border-radius: 9999px;
-    padding: 14px 32px;
+    padding: 12px 32px;
     background-color: transparent;
-    color: #F4EFE6;
-    border: 1px solid rgba(244, 239, 230, 0.35);
+    color: #DCDCDC;
+    border: 1px solid rgba(212, 154, 122, 0.35);
     text-transform: uppercase;
     font-family: 'Inter', sans-serif;
     font-weight: 600;
     font-size: 0.75rem;
-    letter-spacing: 1.5px;
+    letter-spacing: 0.16em;
     cursor: pointer;
     display: inline-flex;
     align-items: center;
@@ -50,25 +82,25 @@
     gap: 0.5rem;
     transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
   }
-  .premium-btn-outline:hover {
+  .btn-outline-pill:hover {
     transform: translateY(-2px);
-    background-color: rgba(244, 239, 230, 0.1);
-    border-color: #F4EFE6;
-    color: #F4EFE6;
+    background-color: rgba(212, 154, 122, 0.1);
+    border-color: #D49A7A;
+    color: #D49A7A;
+    box-shadow: 0 4px 16px rgba(212, 154, 122, 0.15);
   }
 
-  /* Terracotta Action Button */
-  .terracotta-btn {
+  .btn-parchment-pill {
     border-radius: 9999px;
-    padding: 12px 28px;
-    background-color: #B56653;
-    color: #F4EFE6;
-    border: 1px solid #B56653;
+    padding: 10px 24px;
+    background-color: #F2EBE5;
+    color: #1F1713;
+    border: 1px solid #3D2E24;
     text-transform: uppercase;
     font-family: 'Inter', sans-serif;
-    font-weight: 600;
-    font-size: 0.75rem;
-    letter-spacing: 1.5px;
+    font-weight: 700;
+    font-size: 0.7rem;
+    letter-spacing: 0.14em;
     cursor: pointer;
     display: inline-flex;
     align-items: center;
@@ -76,36 +108,100 @@
     gap: 0.5rem;
     transition: all 0.2s ease-out;
   }
-  .terracotta-btn:hover {
+  .btn-parchment-pill:hover {
+    transform: translateY(-1.5px);
+    background-color: #FAF7F2;
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.2);
+  }
+
+  .btn-burgundy-pill {
+    border-radius: 9999px;
+    padding: 12px 28px;
+    background-color: #2A0E14;
+    color: #DCDCDC;
+    border: 1px solid rgba(212, 154, 122, 0.4);
+    text-transform: uppercase;
+    font-family: 'Inter', sans-serif;
+    font-weight: 600;
+    font-size: 0.75rem;
+    letter-spacing: 0.14em;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    transition: all 0.25s ease-out;
+  }
+  .btn-burgundy-pill:hover {
     transform: translateY(-2px);
-    background-color: #9E5442;
-    box-shadow: 0 4px 12px rgba(181, 102, 83, 0.35);
+    background-color: #38141C;
+    border-color: #D49A7A;
+    color: #FAF7F2;
+    box-shadow: 0 6px 20px rgba(42, 14, 20, 0.5);
   }
 
-  /* Heritage Product Card with Forest / Terracotta Accents */
-  .product-card {
-    background-color: #24362A;
-    border: 1px solid rgba(244, 239, 230, 0.12);
-    border-radius: 6px;
-    overflow: hidden;
-    transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s ease, border-color 0.4s ease;
+  /* ========================================================
+     PHYSICAL VINTAGE SWING-TAG PRODUCT CARD
+     ======================================================== */
+  .swing-tag-card {
+    background-color: #F2EBE5;
+    color: #1F1713;
+    border: 1px solid rgba(61, 46, 36, 0.4);
+    border-radius: 18px;
+    position: relative;
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.35);
+    transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s ease, border-color 0.3s ease;
   }
-  .product-card:hover {
-    transform: translateY(-6px) scale(1.01);
-    border-color: rgba(186, 159, 122, 0.6);
-    box-shadow: 0 16px 36px rgba(0, 0, 0, 0.35);
+  .swing-tag-card:hover {
+    transform: translateY(-6px);
+    border-color: #D49A7A;
+    box-shadow: 0 20px 45px rgba(0, 0, 0, 0.5);
   }
 
-  /* Heritage Floating Card (Terracotta) */
-  .terracotta-floating-card {
-    background-color: #B56653;
-    color: #F4EFE6;
-    border-radius: 8px;
-    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.35);
+  /* Realistic Metallic Brass Eyelet Grommet at top of swing tag */
+  .swing-tag-eyelet {
+    width: 14px;
+    height: 14px;
+    border-radius: 9999px;
+    background-color: #121212;
+    border: 2.5px solid #D49A7A;
+    box-shadow: inset 0 1px 3px rgba(0,0,0,0.8), 0 1px 2px rgba(255,255,255,0.4);
+    position: absolute;
+    top: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 20;
+  }
+
+  /* Whimsical knotted cord extending from eyelet */
+  .swing-tag-string {
+    position: absolute;
+    top: -14px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 2px;
+    height: 24px;
+    background: linear-gradient(to bottom, transparent, rgba(212, 154, 122, 0.6), #8C5F45);
+    z-index: 10;
+  }
+
+  /* Floating Tag Pill over Product Images */
+  .floating-pill-tag {
+    background-color: #F2EBE5;
+    color: #1F1713;
+    border: 1px solid rgba(61, 46, 36, 0.3);
+    border-radius: 9999px;
+    padding: 3px 10px;
+    font-family: 'Inter', sans-serif;
+    font-size: 0.625rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
   }
 }
 
-/* Infinite Marquee */
+/* Infinite Marquee Ticker */
 @keyframes marquee {
   0% { transform: translateX(0%); }
   100% { transform: translateX(-50%); }
@@ -114,24 +210,24 @@
 .animate-marquee {
   display: flex;
   width: 200%;
-  animation: marquee 28s linear infinite;
+  animation: marquee 30s linear infinite;
 }
 
 .animate-marquee:hover {
   animation-play-state: paused;
 }
 
-/* Custom Scrollbar in Forest & Brass */
+/* Custom Scrollbar in Charcoal & Rose Gold */
 ::-webkit-scrollbar {
-  width: 7px;
+  width: 6px;
 }
 ::-webkit-scrollbar-track {
-  background: #203227;
+  background: #121212;
 }
 ::-webkit-scrollbar-thumb {
-  background: #BA9F7A;
+  background: #D49A7A;
   border-radius: 9999px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: #F4EFE6;
+  background: #E4B399;
 }

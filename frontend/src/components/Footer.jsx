@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { useCart } from '../context/CartContext';
+import { DiamondIcon } from './LineIcons';
 
 export default function Footer() {
   const { showToast } = useCart();
@@ -8,121 +9,123 @@ export default function Footer() {
   const handleSubscribe = (e) => {
     e.preventDefault();
     if (email) {
-      showToast('Subscribed to Campus Drop Alerts!', 'success');
+      showToast('Subscribed to Campus Secret Vault Drops!', 'success');
       setEmail('');
     }
   };
 
   return (
-    <footer className="bg-[#203227] text-[#F4EFE6] border-t border-[#F4EFE6]/10 w-full py-16 px-6 md:px-12">
-      <div className="grid grid-cols-1 md:grid-cols-12 gap-10 md:gap-14 max-w-[1440px] mx-auto pb-12 border-b border-[#F4EFE6]/15">
-        {/* Brand & Mission */}
+    <footer className="bg-charcoal-pattern text-[#DCDCDC] border-t border-[#D49A7A]/20 w-full pt-16 pb-12 px-6 md:px-12 relative z-10">
+      <div className="grid grid-cols-1 md:grid-cols-12 gap-10 md:gap-14 max-w-[1440px] mx-auto pb-12 border-b border-[#D49A7A]/20">
+        
+        {/* Brand & Ethos */}
         <div className="col-span-1 md:col-span-5">
           <div className="flex items-center gap-2 mb-3">
-            <h2 className="font-serif text-3xl font-bold text-[#F4EFE6] tracking-tight">
-              ThriftCampus+
+            <h2 className="font-serif text-3xl font-bold text-[#D49A7A] tracking-tight">
+              ThriftCampus
             </h2>
-            <span className="text-[#BA9F7A] text-lg select-none">✦</span>
+            <DiamondIcon className="w-5 h-5" color="#D49A7A" />
           </div>
-          <p className="text-[#F4EFE6]/70 text-sm font-sans max-w-sm leading-relaxed mb-6">
-            The Student-Led Fashion Movement. Elevating peer-to-peer commerce with editorial curation, zero carbon impact, and authentic campus culture.
+          <p className="text-[#A8A8A8] text-xs sm:text-sm font-sans max-w-sm leading-relaxed mb-6">
+            The Exclusive Curated Luxury & Archival Marketplace. Elevating collegiate fashion culture with rigorous peer authentication, zero carbon transit, and authentic provenance.
           </p>
 
           {/* Impact Stats */}
           <div className="flex gap-8 text-xs font-sans">
             <div>
-              <span className="font-serif text-2xl font-bold text-[#BA9F7A] block">
-                12,400+
+              <span className="font-serif text-2xl font-bold text-[#D49A7A] block">
+                14,200+
               </span>
-              <span className="text-[#F4EFE6]/60 uppercase text-[10px] tracking-wider">Garments Saved</span>
+              <span className="text-[#A8A8A8] uppercase text-[9px] tracking-wider">Garments Archived</span>
             </div>
             <div>
-              <span className="font-serif text-2xl font-bold text-[#BA9F7A] block">
-                $180K+
+              <span className="font-serif text-2xl font-bold text-[#D49A7A] block">
+                ₹210K+
               </span>
-              <span className="text-[#F4EFE6]/60 uppercase text-[10px] tracking-wider">Paid to Students</span>
+              <span className="text-[#A8A8A8] uppercase text-[9px] tracking-wider">Paid to Students</span>
             </div>
             <div>
-              <span className="font-serif text-2xl font-bold text-[#BA9F7A] block">
+              <span className="font-serif text-2xl font-bold text-[#D49A7A] block">
                 0 kg
               </span>
-              <span className="text-[#F4EFE6]/60 uppercase text-[10px] tracking-wider">Campus Transit CO₂</span>
+              <span className="text-[#A8A8A8] uppercase text-[9px] tracking-wider">Campus Transit CO₂</span>
             </div>
           </div>
         </div>
 
         {/* Platform Links */}
         <div className="col-span-1 md:col-span-2 flex flex-col gap-3">
-          <h3 className="text-xs font-sans uppercase tracking-[0.2em] text-[#F4EFE6] font-bold mb-1">
-            Platform
+          <h3 className="text-[11px] font-sans uppercase tracking-[0.2em] text-[#D49A7A] font-bold mb-1">
+            Vault Archives
           </h3>
-          <a href="#curated-finds" className="text-xs font-sans text-[#F4EFE6]/70 hover:text-[#BA9F7A] transition-colors">
-            Curated Archives
+          <a href="#curated-finds" className="text-xs font-sans text-[#A8A8A8] hover:text-[#D49A7A] transition-colors">
+            Curated Garments
           </a>
-          <a href="#categories" className="text-xs font-sans text-[#F4EFE6]/70 hover:text-[#BA9F7A] transition-colors">
-            Trending Categories
+          <a href="#categories" className="text-xs font-sans text-[#A8A8A8] hover:text-[#D49A7A] transition-colors">
+            Archival Disciplines
           </a>
-          <a href="#mystery-bundle" className="text-xs font-sans text-[#F4EFE6]/70 hover:text-[#BA9F7A] transition-colors">
-            Mystery Bundle
+          <a href="#mystery-bundle" className="text-xs font-sans text-[#A8A8A8] hover:text-[#D49A7A] transition-colors">
+            Bespoke Wardrobe Capsule
           </a>
-          <a href="#top-curators" className="text-xs font-sans text-[#F4EFE6]/70 hover:text-[#BA9F7A] transition-colors">
+          <a href="#top-curators" className="text-xs font-sans text-[#A8A8A8] hover:text-[#D49A7A] transition-colors">
             Campus Tastemakers
           </a>
         </div>
 
         {/* Support Links */}
         <div className="col-span-1 md:col-span-2 flex flex-col gap-3">
-          <h3 className="text-xs font-sans uppercase tracking-[0.2em] text-[#F4EFE6] font-bold mb-1">
-            Trust & Support
+          <h3 className="text-[11px] font-sans uppercase tracking-[0.2em] text-[#D49A7A] font-bold mb-1">
+            Provenance
           </h3>
-          <a href="#" className="text-xs font-sans text-[#F4EFE6]/70 hover:text-[#BA9F7A] transition-colors">
+          <a href="#how-it-works" className="text-xs font-sans text-[#A8A8A8] hover:text-[#D49A7A] transition-colors">
             Peer Authentication
           </a>
-          <a href="#" className="text-xs font-sans text-[#F4EFE6]/70 hover:text-[#BA9F7A] transition-colors">
+          <a href="#how-it-works" className="text-xs font-sans text-[#A8A8A8] hover:text-[#D49A7A] transition-colors">
             Campus Drop Zones
           </a>
-          <a href="#" className="text-xs font-sans text-[#F4EFE6]/70 hover:text-[#BA9F7A] transition-colors">
-            Sustainability Audit
+          <a href="#how-it-works" className="text-xs font-sans text-[#A8A8A8] hover:text-[#D49A7A] transition-colors">
+            Zero-Carbon Audit
           </a>
-          <a href="#" className="text-xs font-sans text-[#F4EFE6]/70 hover:text-[#BA9F7A] transition-colors">
-            Community Guidelines
+          <a href="#how-it-works" className="text-xs font-sans text-[#A8A8A8] hover:text-[#D49A7A] transition-colors">
+            Collector Standards
           </a>
         </div>
 
         {/* Newsletter Signup */}
         <div className="col-span-1 md:col-span-3">
-          <h3 className="text-xs font-sans uppercase tracking-[0.2em] text-[#F4EFE6] font-bold mb-2">
-            Secret Drop Alerts
+          <h3 className="text-[11px] font-sans uppercase tracking-[0.2em] text-[#D49A7A] font-bold mb-2">
+            Secret Vault Dispatches
           </h3>
-          <p className="text-xs text-[#F4EFE6]/70 font-sans mb-4 leading-relaxed">
-            Receive notifications when archival Japanese denim or designer pieces drop on your campus.
+          <p className="text-xs text-[#A8A8A8] font-sans mb-4 leading-relaxed">
+            Receive encrypted alerts whenever deadstock Japanese selvedge or rare outerwear drops on your campus.
           </p>
-          <form onSubmit={handleSubscribe} className="flex border border-[#F4EFE6]/20 rounded-full overflow-hidden focus-within:border-[#BA9F7A] transition-colors p-1 bg-[#24362A]">
+          <form onSubmit={handleSubscribe} className="flex border border-[#D49A7A]/30 rounded-full overflow-hidden focus-within:border-[#D49A7A] transition-colors p-1 bg-[#121212]">
             <input
               type="email"
               placeholder="campus.email@edu"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
-              className="bg-transparent text-xs px-4 py-2 outline-none flex-1 text-[#F4EFE6] placeholder-[#F4EFE6]/40"
+              className="bg-transparent text-xs px-4 py-2 outline-none flex-1 text-[#DCDCDC] placeholder-[#A8A8A8]/60"
               required
             />
             <button
               type="submit"
-              className="bg-[#BA9F7A] text-[#203227] px-6 py-2 text-xs font-sans font-bold uppercase tracking-wider hover:bg-[#CDB696] rounded-full transition-colors"
+              className="bg-[#D49A7A] text-[#121212] px-6 py-2 text-[10px] font-sans font-bold uppercase tracking-wider hover:bg-[#E4B399] rounded-full transition-colors cursor-pointer"
             >
               Join
             </button>
           </form>
         </div>
+
       </div>
 
-      {/* Bottom Bar */}
-      <div className="max-w-[1440px] mx-auto mt-8 flex flex-col md:flex-row justify-between items-center text-xs font-sans text-[#F4EFE6]/60 gap-4">
-        <p>© 2026 ThriftCampus+ — Modern Artisan & Heritage Collegiate Marketplace.</p>
-        <div className="flex gap-5">
-          <a href="#" className="hover:text-[#BA9F7A] transition-colors">Privacy Policy</a>
-          <a href="#" className="hover:text-[#BA9F7A] transition-colors">Terms of Service</a>
-          <a href="#" className="hover:text-[#BA9F7A] transition-colors">Security</a>
+      {/* Bottom Legal Bar */}
+      <div className="max-w-[1440px] mx-auto mt-8 flex flex-col md:flex-row justify-between items-center text-xs font-sans text-[#A8A8A8] gap-4">
+        <p>© 2026 ThriftCampus — Curated Luxury & Archival Marketplace. All rights reserved.</p>
+        <div className="flex gap-6">
+          <a href="#" className="hover:text-[#D49A7A] transition-colors">Archival Provenance</a>
+          <a href="#" className="hover:text-[#D49A7A] transition-colors">Terms of Circulation</a>
+          <a href="#" className="hover:text-[#D49A7A] transition-colors">Privacy</a>
         </div>
       </div>
     </footer>
